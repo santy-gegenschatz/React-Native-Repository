@@ -1,24 +1,30 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 
 export default function App() {
-  const [task, setTask] = useState('');
   const [tasks, setTasks] = useState([]);
 
-  const onHandleChangeText = (text) => {
-    setTask(text);
+  const addTask = (taskName) => {
+    setTasks(...tasks, taskName)
   }
-  return (
-    <View style={styles.container}>
-      <View style = {styles.inputContainer}> 
-        <TextInput placeholder = 'List Item' style = {styles.input}> </TextInput>
-        <Text> Hello, Coder! </Text>
-        <Button title = 'ADD' onPress={ () => console.warn('Button has been clicked')}> </Button>
-      </View>
-      <View>
 
+  return (
+    // The overall container houses two views
+    <View style={styles.container}>
+      {/* The first one houses the input and button to create a new task */}
+      <View style = {styles.inputContainer}> 
+        <TextInput placeholder = 'List Item' style = {styles.input} />
+        <Button title = 'Add Task'/>
       </View>
+      {/* The second one houses the list with the tasks. */}
+      {/* Each task is clickable, and upon beingclicked will open a modal that will allow the deletion of said task */}
+      <View style = {styles.itemsListContainer}>
+        <ScrollView>
+          
+        </ScrollView>
+      </View>
+      <Button title = 'Trigger a Warning' onPress={ () => console.warn('Button has been clicked')}> </Button>
       <StatusBar style="auto" />
     </View>
   );
@@ -28,9 +34,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#fff456',
+    padding: 30
   },
   input: {
     borderBottomColor: 'black', 
@@ -38,6 +43,12 @@ const styles = StyleSheet.create({
     innerWidth: 200
   },
   inputContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    padding: 15,
+    backgroundColor: '#CC5500'
+  },
+  itemsListContainer: {
 
   }
 });
