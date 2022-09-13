@@ -3,10 +3,16 @@ import { useState } from 'react';
 import { Button, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 
 export default function App() {
+  const [textItem, setTextItem] = useState('');
   const [tasks, setTasks] = useState([]);
 
-  const addTask = (taskName) => {
-    setTasks(...tasks, taskName)
+  const onHandlerChangeItem = (t) => { setTextItem(t)}
+
+  const addTask = () => {
+    setTasks(...tasks, 
+      {id: Math.random().toString(), value : textItem}
+      )
+    setTextItem('')
   }
 
   return (
@@ -14,17 +20,16 @@ export default function App() {
     <View style={styles.container}>
       {/* The first one houses the input and button to create a new task */}
       <View style = {styles.inputContainer}> 
-        <TextInput placeholder = 'List Item' style = {styles.input} />
-        <Button title = 'Add Task'/>
+        <TextInput placeholder = 'List Item' style = {styles.input} onChangeText = {onHandlerChangeItem}/>
+        <Button title = 'Add Task' onPress = {addTask}/>
       </View>
       {/* The second one houses the list with the tasks. */}
       {/* Each task is clickable, and upon beingclicked will open a modal that will allow the deletion of said task */}
       <View style = {styles.itemsListContainer}>
-        <ScrollView>
-          
-        </ScrollView>
+        {tasks.map( (element) => {
+          <Text id = {element.id}> {element.value} </Text>
+        })}
       </View>
-      <Button title = 'Trigger a Warning' onPress={ () => console.warn('Button has been clicked')}> </Button>
       <StatusBar style="auto" />
     </View>
   );
