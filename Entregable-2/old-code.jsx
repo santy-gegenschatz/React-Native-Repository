@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { Button, FlatList, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 
 export default function App() {
   const [textItem, setTextItem] = useState('');
@@ -26,15 +26,6 @@ export default function App() {
     setTextItem('')
   }
 
-  const renderItem = ({item}) => {
-    console.log(item);
-    return (
-    <View style = {styles.itemView}>
-      <Text style = {{textAlign: 'center', fontSize: 20}}> {item.value} </Text>
-    </View>
-    )
-  }
-
   return (
     // The overall container houses two views
     <View style={styles.container}>
@@ -45,7 +36,15 @@ export default function App() {
       </View>
       {/* The second one houses the list with the tasks. */}
       {/* Each task is clickable, and upon beingclicked will open a modal that will allow the deletion of said task */}
-      <FlatList data = {tasks} renderItem = {renderItem} keyExtractor = {(item) => item.id} styles = {styles.itemsListContainer} />
+      <View style = {styles.itemsListContainer}>
+        {tasks.map( (element) => {
+          return (
+            <View style = {styles.itemView}>
+              <Text key = {element.id} style = {{textAlign: 'center', fontSize: 20}}> {element.value} </Text>
+            </View>
+          )
+        })}
+      </View>
       <StatusBar style="auto" />
     </View>
   );
