@@ -1,13 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { Button, FlatList, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, FlatList, TouchableOpacity, StyleSheet, Text, TextInput, View } from 'react-native';
 
 export default function App() {
   const [textItem, setTextItem] = useState('');
-  const [tasks, setTasks] = useState([{id: 1, value: 'Buy Coca Cola'}]);
+  const [tasks, setTasks] = useState([{id: '1', value: 'Buy Coca Cola'}, {id: '2', value : 'Buy Lemonade'}, {id: '3', value : 'Buy Water'}]);
 
   const [itemSelected, setItemSelected] = useState({});
-  const [modalVisible, setModalVisible] = useState([]);
+  const [modalVisible, setModalVisible] = useState(false);
 
    const onHandlerChangeItem = (t) => { 
     console.log(t);
@@ -30,9 +30,23 @@ export default function App() {
     console.log(item);
     return (
     <View style = {styles.itemView}>
-      <Text style = {{textAlign: 'center', fontSize: 20}}> {item.value} </Text>
+      <Text style = {styles.itemText}> {item.value} </Text>
+      <TouchableOpacity onPress = {() => onHandleModal(item.id)}>
+        <Text style = {styles.itemDelete}> X </Text>
+      </TouchableOpacity>
     </View>
     )
+  }
+
+  const onHandleModal = (id) => {
+    setModalVisible(!modalVisible);
+    setItemSelected(tasks.find(item => item.id === id))
+  }
+
+  const onHandlerDelete = (id) => {
+    setTasks(tasks.filter( (item) => item.id !== id));
+    setItemSelected(null);
+    setModalVisible(!modalVisible)
   }
 
   return (
@@ -56,7 +70,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#ffffff',
-    padding: 30
+    padding: 5
   },
   input: {
     borderBottomColor: 'black', 
@@ -74,6 +88,7 @@ const styles = StyleSheet.create({
     borderRadius: 25,
   },
   itemsListContainer: {
+    flex: 1,
     backgroundColor: '#DDDDDD',
     marginTop: 20,
     width: 330,
@@ -84,12 +99,24 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start'
   },
   itemView: {
+    flex: 1,
     backgroundColor: '#BBF6F9',
     height: 45,
     borderRadius: 25,
     display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     margin: 15
+  },
+  itemText: {
+    fontWeight: 'bold',
+    textAlign: 'center', 
+    fontSize: 20
+  },
+  itemDelete: {
+    fontSize: 30,
+    marginRight: 10,
+    color: 'black',
   }
 });
