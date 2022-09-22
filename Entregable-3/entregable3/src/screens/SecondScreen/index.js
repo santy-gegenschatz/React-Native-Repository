@@ -3,9 +3,12 @@ import { styles } from './styles'
 
 const SecondScreen = () => {
   return (
-    <View style = {styles.secondScreen__view}>
-        <Text> This is the second screen </Text>
-    </View>
+    <>    
+        <Header title = 'Second Screen'/>
+        <View style = {styles.secondScreen__view}>
+            <Text> This is the Second Screen of the App </Text>
+        </View>
+    </>
   )
 }
 
