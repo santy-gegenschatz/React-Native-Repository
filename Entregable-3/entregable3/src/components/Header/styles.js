@@ -1,7 +1,8 @@
 import { StyleSheet } from "react-native"
+import Colors from "../../constants/Colors"
 
 export const styles = StyleSheet.create({
     header__view: {
-        backgroundColor: '#000000'
+        backgroundColor: Colors.black
     }
 })
