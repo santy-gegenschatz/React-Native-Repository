@@ -3,9 +3,15 @@ import Colors from "../../constants/Colors"
 
 export const styles = StyleSheet.create({
     header__view: {
-        backgroundColor: Colors.black
+        backgroundColor: Colors.red,
+        height: 50,
+        flexDirection: 'column',
+        justifyContent: 'center',
+        width: 350
     },
     header__title: {
-        fontFamily: 'open-sans-bold'
+        fontFamily: 'open-sans-bold',
+        textAlign: 'center',
+        fontWeight: 'bold'
     }
 })
