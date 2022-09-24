@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
         width: 350
     },
     header__title: {
-        fontFamily: 'open-sans-bold',
+        fontFamily: 'OpenSansBold',
         textAlign: 'center',
         fontWeight: 'bold'
     }
