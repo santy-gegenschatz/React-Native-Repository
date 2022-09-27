@@ -1,0 +1,14 @@
+import { StyleSheet } from "react-native";
+
+export const styles = StyleSheet.create({
+    categories__main__view: {
+        flex: 1,
+        justifyContent: 'center',
+        alignContent: 'center'
+    },
+    categories__text: {
+        textAlign: 'center',
+        fontFamily: 'Pacifico-Regular',
+        fontSize: 40
+    }
+})
