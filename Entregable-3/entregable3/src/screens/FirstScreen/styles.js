@@ -10,5 +10,5 @@ export const styles = StyleSheet.create({
     },
     firstScreen__text: {
         textAlign: 'center'
-    }
+    } //
 })
