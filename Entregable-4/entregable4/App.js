@@ -12,7 +12,6 @@ export default function App() {
     return <ActivityIndicator />
   }
   return (
-    // <AppNavigator />
-    <Categories />
+    <AppNavigator />
   );
 }
