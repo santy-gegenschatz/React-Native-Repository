@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, FlatList } from 'react-native'
+import { View, TouchableOpacity, FlatList, Text } from 'react-native'
 import CartItem from '../../components/cart-item'
 import { cart } from '../../constants/data/cart'
 import { styles } from './styles'
@@ -12,14 +12,16 @@ const Cart = ({navigation}) => {
   }
 
   const renderItem = ({item}) => {
-    <CartItem item = {item} onDelete = {onDelete}/> 
+    return (
+      <CartItem item = {item} onDelete = {onDelete}/> 
+    )
   }
   return (
     <View style = {styles.container}>
-        <View style = {styles.containerlist}>
+        <View style = {styles.containerList}>
           <FlatList 
           data = {cart}
-          renderItem = {CartItem}
+          renderItem = {renderItem}
           style = {styles.containerList}
           />
         </View>
@@ -28,6 +30,7 @@ const Cart = ({navigation}) => {
               style = {styles.buttonConfirm}
               onPress = {() => null}
             />
+            <Text> Hellow WOrld </Text>
         </View>
     </View>
   )

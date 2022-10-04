@@ -1,5 +1,7 @@
 import React from 'react'
 import { View, Text, Button } from 'react-native'
+import Ionicons from '@expo/vector-icons/Ionicons';
+import { colors } from '../../constants/colors'
 import {styles} from './styles'
 
 const Categories = ({navigation}) => {
