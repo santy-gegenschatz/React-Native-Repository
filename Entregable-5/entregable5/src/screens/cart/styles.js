@@ -4,7 +4,7 @@ import { colors } from '../../constants/colors'
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'flex-start',
+    justifyContent: 'space-between',
     alignItems: 'center',
     backgroundColor: colors.beige
   },
@@ -13,18 +13,17 @@ export const styles = StyleSheet.create({
   },
   footer: {
     margin: 10,
+    padding: 10,
     borderRadius: 20,
     backgroundColor: colors.black,
-    height: 100,
+    height: 85,
     justifyContent: 'center',
     width: 370,
-
   },
   footerTitle: {
     color: colors.white,
     fontSize: 23,
     fontWeight: 'bold',
-    padding: 20
   },
   footerView: {
     flexDirection: 'row',

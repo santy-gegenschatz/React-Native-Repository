@@ -32,7 +32,7 @@ const Cart = ({navigation}) => {
             >
               <View style = {styles.footerView}>
                 <Text style = {styles.footerTitle}> Total value of the Order </Text>
-                <Text style = {styles.footerTitle}> {total} </Text>
+                <Text style = {styles.footerTitle}> ${total} </Text>
               </View>
             </ TouchableOpacity>
         </View>
