@@ -9,11 +9,25 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.beige
   },
   containerList: {
-    backgroundColor: colors.red,
     width: 400
   },
   footer: {
+    margin: 10,
+    borderRadius: 20,
     backgroundColor: colors.black,
-    height: 100
+    height: 100,
+    justifyContent: 'center',
+    width: 370,
+
+  },
+  footerTitle: {
+    color: colors.white,
+    fontSize: 23,
+    fontWeight: 'bold',
+    padding: 20
+  },
+  footerView: {
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   }
 })

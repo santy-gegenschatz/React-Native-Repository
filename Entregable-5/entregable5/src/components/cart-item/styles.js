@@ -9,7 +9,8 @@ export const styles = StyleSheet.create({
         margin: 20,
         backgroundColor: colors.green,
         borderRadius: 25,
-        shadowOffset: 3
+        shadowOffset: 3,
+        padding: 10
     },
     headerContainer: {
         backgroundColor: colors.green,
@@ -17,8 +18,10 @@ export const styles = StyleSheet.create({
         alignItems: 'flex-start'
     },
     contentContainer: {
+        flex: 1,
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        alignSelf: 'stretch'
     },
     title: {
         fontSize: 22

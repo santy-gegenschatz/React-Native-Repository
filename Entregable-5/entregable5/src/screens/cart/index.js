@@ -26,11 +26,15 @@ const Cart = ({navigation}) => {
           />
         </View>
         <View style = {styles.footer}>
-            <TouchableOpacity
+            <TouchableOpacity 
               style = {styles.buttonConfirm}
               onPress = {() => null}
-            />
-            <Text> Hellow WOrld </Text>
+            >
+              <View style = {styles.footerView}>
+                <Text style = {styles.footerTitle}> Total value of the Order </Text>
+                <Text style = {styles.footerTitle}> {total} </Text>
+              </View>
+            </ TouchableOpacity>
         </View>
     </View>
   )

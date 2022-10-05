@@ -10,7 +10,7 @@ const CartItem = ({item, onDelete}) => {
         <Text style = {styles.title}> {item.title} </Text>
       </View>
       <View style = {styles.contentContainer}>
-        <View >
+        <View>
           <Text> Quantity: {item.quantity} </Text>
           <Text> Price {item.price} </Text>
         </View>
