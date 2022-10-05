@@ -6,22 +6,24 @@ const Payment = () => {
   return (
     <View style = {styles.container}>
         
-        <View style = {orderDetailsView}>
+        <View style = {styles.orderDetailsView}>
             <Text> Price & Quantity </Text>
         </View>
         
         <View>
-            <Text style = {confirmText}> Confirm ?</Text>
+            <Text style = {styles.confirmText}> Confirm ?</Text>
         </View>
-        <View style = {buttonsView}>
-            <TouchableOpacity style = {negativeButton} >
+        <View style = {styles.buttonsView}>
+            <TouchableOpacity style = {styles.negativeButton} >
                 <Text> No </Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style = {positiveButton} >
+            <TouchableOpacity style = {styles.positiveButton} >
                 <Text> Yes </Text>
             </TouchableOpacity>
         </View>
     </View>
   )
 }
+
+export default Payment

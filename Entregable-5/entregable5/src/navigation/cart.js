@@ -1,6 +1,7 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Cart from "../screens/cart";
+import Payment from '../screens/payment/index';
 
 const Stack = createNativeStackNavigator();
 
@@ -11,6 +12,12 @@ const CartNavigator = () => {
             name = 'Cart'
             component = {Cart}
             />
+
+            <Stack.Screen
+            name = 'Payment'
+            component = {Payment}
+            />
+
         </Stack.Navigator>
     )
 }

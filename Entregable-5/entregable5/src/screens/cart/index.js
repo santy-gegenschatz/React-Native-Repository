@@ -16,6 +16,11 @@ const Cart = ({navigation}) => {
       <CartItem item = {item} onDelete = {onDelete}/> 
     )
   }
+
+  const goToPayment = () => {
+    navigation.navigate('Payment')
+  }
+
   return (
     <View style = {styles.container}>
         <View style = {styles.containerList}>
@@ -28,7 +33,7 @@ const Cart = ({navigation}) => {
         <View style = {styles.footer}>
             <TouchableOpacity 
               style = {styles.buttonConfirm}
-              onPress = {() => null}
+              onPress = {goToPayment}
             >
               <View style = {styles.footerView}>
                 <Text style = {styles.footerTitle}> Total value of the Order </Text>
