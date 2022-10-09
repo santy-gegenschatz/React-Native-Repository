@@ -19,7 +19,7 @@ export const styles = StyleSheet.create({
     buttonsView: {
       flexDirection: 'row',
       justifyContent: 'space-between',
-      width: 300
+      width: 150
     },
     negativeButton: {
       backgroundColor: colors.red,

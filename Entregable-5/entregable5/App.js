@@ -2,7 +2,6 @@ import { StatusBar } from 'expo-status-bar';
 import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 import { useFonts } from 'expo-font';
 import AppNavigator from './src/navigation';
-import { styles } from './styles'
 
 export default function App() {
   const [loaded] = useFonts({
