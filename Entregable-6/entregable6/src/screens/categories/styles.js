@@ -19,6 +19,7 @@ export const styles = StyleSheet.create({
         marginBottom: 20
     },
     containerList: {
-        backgroundColor: colors.grey
+        backgroundColor: colors.red,
+
     }
 })

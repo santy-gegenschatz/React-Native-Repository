@@ -4,8 +4,10 @@ const initialState = {
     categories: categories,
     selected: null
 }
+console.log(categories);
 
 const categoryReducer = (state = initialState, action) => {
+    console.log(state);
     return state
 }
 

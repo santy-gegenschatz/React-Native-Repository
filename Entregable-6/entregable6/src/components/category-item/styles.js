@@ -3,7 +3,7 @@ import { colors } from "../../constants/colors";
 
 export const styles = StyleSheet.create({
     container: {
-        backgroundColor: colors.light-blue
+        backgroundColor: colors.lightBlue
     },
     title: {
         fontSize: 20,
