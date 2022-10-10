@@ -1,13 +1,14 @@
-import React from 'react'
-import { View, Text } from 'react-native'
+import { StyleSheet } from "react-native";
+import { colors } from "../../constants/colors";
 
-const CategoryItem = ({item}) => {
-
-    return (
-        <View>
-            <Text> {item.title} </Text>
-        </View>
-    )
-}
-
-export default CategoryItem
+export const styles = StyleSheet.create({
+    container: {
+        backgroundColor: colors.light-blue
+    },
+    title: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: colors.white,
+        textAlign: 'center'
+    }
+})
