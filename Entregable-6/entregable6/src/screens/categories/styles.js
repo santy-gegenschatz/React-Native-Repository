@@ -17,5 +17,8 @@ export const styles = StyleSheet.create({
         fontFamily: 'Pacifico-Regular',
         fontSize: 40,
         marginBottom: 20
+    },
+    containerList: {
+        backgroundColor: colors.grey
     }
 })
