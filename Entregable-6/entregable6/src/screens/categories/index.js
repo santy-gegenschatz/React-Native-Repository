@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react'
 import { View, Text, Button, FlatList } from 'react-native'
 import { styles } from './styles'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import CategoryItem from '../../components/category-item'
+import { selectCategory } from '../../store/actions/index'
 
 
 const Categories = ({navigation}) => {
+    const dispatch = useDispatch()
     const categories = useSelector( (state) => {
-        console.log(state.category);
         return state.category.categories
     })
     console.log(categories);
@@ -15,8 +16,10 @@ const Categories = ({navigation}) => {
         return (<CategoryItem item = {item} onSelected = {onSelected}/>)
     }
 
-    const onSelected = () => {
-
+    const onSelected = (item) => {
+        console.log('double');
+        // dispatch(selectCategory(item.id))
+        navigation.navigate('Products', {name: item.title, categoryId: item.category})
     }
 
     const navigateToProducts = () => {

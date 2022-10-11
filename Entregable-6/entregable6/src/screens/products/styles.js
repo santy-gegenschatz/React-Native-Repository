@@ -13,8 +13,11 @@ export const styles = StyleSheet.create({
         alignContent: 'center'
     },
     products__text: {
-        fontSize: 40,
+        fontSize: 20,
         fontFamily: 'Pacifico-Regular',
         textAlign: 'center'
+    },
+    flatlist: {
+        backgroundColor: colors.grey
     }
 })

@@ -1,4 +1,6 @@
 import { categories } from "../../constants/data/categories";
+import { categoryTypes } from "../types";
+const { SELECT_CATEGORY } = categoryTypes
 
 const initialState = {
     categories: categories,
@@ -6,7 +8,16 @@ const initialState = {
 }
 
 const categoryReducer = (state = initialState, action) => {
-    return state
+    switch(action.type) {
+        case SELECT_CATEGORY :
+            return {
+                ...state,
+                selected: categories.find((cat) => cat.id === action.categoryId)
+            }
+        
+        default :
+            return state
+    }
 }
 
 export default categoryReducer

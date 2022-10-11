@@ -7,7 +7,9 @@ const CategoryItem = ({item, onSelected}) => {
     return (
         <View style = {{...styles.container, backgroundColor: item.color}}>
             <TouchableOpacity
-                onPress = {() => onSelected}>
+                onPress = {() => {
+                    console.log('press');
+                    onSelected(item)}}>
                 <View>
                     <Text style = {styles.title}> {item.title} </Text>
                 </View>
