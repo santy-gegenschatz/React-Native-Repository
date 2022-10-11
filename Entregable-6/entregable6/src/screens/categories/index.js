@@ -8,11 +8,10 @@ import CategoryItem from '../../components/category-item'
 const Categories = ({navigation}) => {
     const categories = useSelector( (state) => {
         console.log(state.category);
-        return state.category.products
+        return state.category.categories
     })
     console.log(categories);
     const renderItem = ({item}) => {
-        console.log("Hello");
         return (<CategoryItem item = {item} onSelected = {onSelected}/>)
     }
 
@@ -23,13 +22,6 @@ const Categories = ({navigation}) => {
     const navigateToProducts = () => {
         navigation.navigate('Products')
     }
-
-    // useEffect(()=> {
-    //     const categories = useSelector( (state) => {
-    //         console.log(state);
-    //         state.category.categories})
-    //     console.log(categories);
-    // }, [])
 
     return (
         <View style = {styles.categories__main__view}>

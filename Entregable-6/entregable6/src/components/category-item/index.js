@@ -5,11 +5,11 @@ import { styles } from './styles'
 const CategoryItem = ({item, onSelected}) => {
     console.log('Loading');
     return (
-        <View style = {styles.container}>
+        <View style = {{...styles.container, backgroundColor: item.color}}>
             <TouchableOpacity
                 onPress = {() => onSelected}>
                 <View>
-                    <Text style = {styles.title}> {item.title} 98709870</Text>
+                    <Text style = {styles.title}> {item.title} </Text>
                 </View>
             </TouchableOpacity>
         </View>

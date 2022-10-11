@@ -3,7 +3,7 @@ import { colors } from "../../constants/colors";
 
 export const styles = StyleSheet.create({
     categories__button__view: {
-        backgroundColor: colors.secondary,
+        backgroundColor: colors.beige,
         alignItems: 'center',
         padding: 10
     },
@@ -15,11 +15,10 @@ export const styles = StyleSheet.create({
     categories__text: {
         textAlign: 'center',
         fontFamily: 'Pacifico-Regular',
-        fontSize: 40,
-        marginBottom: 20
+        fontSize: 20,
+        marginBottom: 10
     },
     containerList: {
-        backgroundColor: colors.red,
-
+        backgroundColor: colors.grey
     }
 })
