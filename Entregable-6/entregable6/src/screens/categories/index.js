@@ -6,20 +6,21 @@ import CategoryItem from '../../components/category-item'
 import { selectCategory } from '../../store/actions/index'
 
 
-const Categories = ({navigation}) => {
+const Categories = ({navigation, route}) => {
     const dispatch = useDispatch()
+
     const categories = useSelector( (state) => {
         return state.category.categories
     })
     console.log(categories);
+
     const renderItem = ({item}) => {
         return (<CategoryItem item = {item} onSelected = {onSelected}/>)
     }
 
     const onSelected = (item) => {
-        console.log('double');
-        // dispatch(selectCategory(item.id))
-        navigation.navigate('Products', {name: item.title, categoryId: item.category})
+        dispatch(selectCategory(item.id))
+        navigation.navigate('Products')
     }
 
     const navigateToProducts = () => {
