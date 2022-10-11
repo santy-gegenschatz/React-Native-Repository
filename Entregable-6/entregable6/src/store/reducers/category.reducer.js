@@ -11,12 +11,9 @@ const categoryReducer = (state = initialState, action) => {
     
     switch(action.type) {
         case SELECT_CATEGORY :
-            console.log('a');
-            console.log('Categories: ', state);
-            console.log('Action: ', action);
-            console.log(action.categoryId);
+            console.log('Reducer Categories: ', state);
+            console.log('Reducer Action: ', action);
             const indexCategory = state.categories.findIndex( (cat) => cat.id === action.categoryId)
-            console.log(indexCategory);
             return {
                 ...state,
                 selected: categories[indexCategory]

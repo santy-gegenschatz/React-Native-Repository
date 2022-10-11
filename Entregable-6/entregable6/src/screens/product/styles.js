@@ -2,19 +2,23 @@ import { StyleSheet } from "react-native";
 import { colors } from "../../constants/colors";
 
 export const styles = StyleSheet.create({
-    product__button__view: {
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    product__main__view: {
+    container: {
         flex: 1,
         justifyContent: 'center',
         alignContent: 'center'
     },
-    product__text: {
-        fontSize: 40,
+    title: {
+        fontSize: 20,
         fontFamily: 'Pacifico-Regular',
         textAlign: 'center'
+    },
+    itemProperties: {
+        backgroundColor: colors.grey,
+        justifyContent: 'center'
+    },
+    description: {
+        fontWeight: 'bold',
+        color: colors.white
     },
     product__touchable_button_one: {
         alignItems: 'center',
@@ -26,5 +30,9 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: colors.green,
         padding: 10
+    },
+    product__button__view: {
+        justifyContent: 'center',
+        alignItems: 'center',
     }
 })

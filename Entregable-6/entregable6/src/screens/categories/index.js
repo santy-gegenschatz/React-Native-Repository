@@ -8,18 +8,19 @@ import { selectCategory } from '../../store/actions/index'
 
 const Categories = ({navigation, route}) => {
     const dispatch = useDispatch()
-
+    //
     const categories = useSelector( (state) => {
         return state.category.categories
     })
-    console.log(categories);
 
     const renderItem = ({item}) => {
         return (<CategoryItem item = {item} onSelected = {onSelected}/>)
     }
 
     const onSelected = (item) => {
+        console.log('3: select category action');
         dispatch(selectCategory(item.id))
+        console.log('5: navigating');
         navigation.navigate('Products')
     }
 
