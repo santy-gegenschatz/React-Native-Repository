@@ -26,7 +26,7 @@ const Cart = ({navigation}) => {
     <View style = {styles.container}>
         <View style = {styles.containerList}>
           <FlatList 
-          data = {cart}
+          data = {items}
           renderItem = {renderItem}
           style = {styles.containerList}
           />
