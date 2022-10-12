@@ -1,11 +1,12 @@
 import React from 'react'
 import { View, TouchableOpacity, FlatList, Text } from 'react-native'
-import CartItem from '../../components/cart-item'
-import { cart } from '../../constants/data/cart'
+import { useSelector } from 'react-redux'
 import { styles } from './styles'
+import CartItem from '../../components/cart-item'
 
 const Cart = ({navigation}) => {
-  const total = 200;
+  const items = useSelector(state => state.cart.items)
+  const total = useSelector(state => state.cart.total)
 
   const onDelete = (id) => {
     console.warn(id)
