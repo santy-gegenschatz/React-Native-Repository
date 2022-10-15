@@ -11,6 +11,15 @@ export const styles = StyleSheet.create({
   containerList: {
     width: 400
   },
+  disabledButtonConfirm: {
+    margin: 10,
+    padding: 10,
+    borderRadius: 20,
+    backgroundColor: colors.grey,
+    height: 85,
+    justifyContent: 'center',
+    width: 370,
+  }, 
   footer: {
     margin: 10,
     padding: 10,

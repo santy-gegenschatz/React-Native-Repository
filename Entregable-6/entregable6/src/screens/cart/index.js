@@ -1,15 +1,17 @@
 import React from 'react'
 import { View, TouchableOpacity, FlatList, Text } from 'react-native'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { styles } from './styles'
 import CartItem from '../../components/cart-item'
+import { confirmCart, removeItem } from '../../store/actions/cart.actions'
 
 const Cart = ({navigation}) => {
+  const dispatch = useDispatch()
   const items = useSelector(state => state.cart.items)
   const total = useSelector(state => state.cart.total)
 
   const onDelete = (id) => {
-    console.warn(id)
+    dispatch(removeItem(id))
   }
 
   const renderItem = ({item}) => {
@@ -19,6 +21,7 @@ const Cart = ({navigation}) => {
   }
 
   const goToPayment = () => {
+    dispatch(confirmCart())
     navigation.navigate('Payment')
   }
 
@@ -33,8 +36,9 @@ const Cart = ({navigation}) => {
         </View>
         <View style = {styles.footer}>
             <TouchableOpacity 
-              style = {styles.buttonConfirm}
+              style = {items.length === 0 ? styles.disabledButtonConfirm :styles.buttonConfirm}
               onPress = {goToPayment}
+              disabled = {items.length === 0}
             >
               <View style = {styles.footerView}>
                 <Text style = {styles.footerTitle}> Total value of the Order </Text>
