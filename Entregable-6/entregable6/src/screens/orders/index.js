@@ -1,11 +1,31 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { View, Text } from 'react-native'
 import { styles } from './styles'
+import { useSelector, useDispatch} from 'react-redux' 
+import { getOrders } from '../../store/actions/index'
+import OrderItem from '../../components/order-item'
 
 const Orders = ({navigation}) => {
+
+  const orders = useSelector( (state) => state.orders.list)
+
+  const renderItem = ({item}) => <OrderItem item = {item} onCancel = {onCancel}/>
+  
+  const onCancel = (id) => {
+    console.warn(id);
+  }
+
+  useEffect( () => {
+    dispatchEvent(getOrders)
+  }, [])
+  
   return (
     <View style = {styles.container}>
-        <Text> Orders </Text>
+        <FlatList 
+            data = {orders}
+            renderItem = {renderItem}
+            keyExtractor = {item => item.id.toString()}
+        />
     </View>
   )
 }
