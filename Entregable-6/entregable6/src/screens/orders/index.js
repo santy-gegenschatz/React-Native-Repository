@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { View, Text } from 'react-native'
+import { View, FlatList } from 'react-native'
 import { styles } from './styles'
 import { useSelector, useDispatch} from 'react-redux' 
 import { getOrders } from '../../store/actions/index'
@@ -7,6 +7,7 @@ import OrderItem from '../../components/order-item'
 
 const Orders = ({navigation}) => {
 
+  const dispatch = useDispatch()
   const orders = useSelector( (state) => state.orders.list)
 
   const renderItem = ({item}) => <OrderItem item = {item} onCancel = {onCancel}/>
@@ -16,7 +17,7 @@ const Orders = ({navigation}) => {
   }
 
   useEffect( () => {
-    dispatchEvent(getOrders)
+    dispatch(getOrders)
   }, [])
   
   return (

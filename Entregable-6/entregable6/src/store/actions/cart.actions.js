@@ -3,7 +3,7 @@ import { URL_API } from "../../constants/firebase";
 
 const {ADD_ITEM, REMOVE_ITEM, CONFIRM_ORDER} = cartTypes
 
-export const addItem = (item) => ({
+export const addToCart = (item) => ({
     type: ADD_ITEM,
     item
 })

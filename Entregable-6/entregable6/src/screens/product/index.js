@@ -7,12 +7,9 @@ import {styles} from './styles'
 const Product = ({navigation}) => {
     const dispatch = useDispatch()
     
-    const selectedProduct = useSelector( (state) => {
-        console.log('Current state of products: ',state.products);
-        return (state.products.selected)
-    })
+    const selectedProduct = useSelector( (state) => { return (state.products.selected)})
 
-    const addToCart = () => {
+    const addCartItem = () => {
         dispatch(addToCart(selectedProduct))
         navigation.navigate('Cart')
     }
@@ -27,7 +24,7 @@ const Product = ({navigation}) => {
             </View>
             <Button 
                 title = 'Add to cart'
-                onPress = {addToCart}
+                onPress = {addCartItem}
                 />
         </View>
     )
