@@ -11,7 +11,7 @@ const Product = ({navigation}) => {
 
     const addCartItem = () => {
         dispatch(addToCart(selectedProduct))
-        navigation.navigate('Cart')
+        navigation.navigate('CartTab')
     }
     
     return (

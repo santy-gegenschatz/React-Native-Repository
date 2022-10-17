@@ -9,6 +9,7 @@ const Orders = ({navigation}) => {
 
   const dispatch = useDispatch()
   const orders = useSelector( (state) => state.orders.list)
+  console.log(orders);
 
   const renderItem = ({item}) => <OrderItem item = {item} onCancel = {onCancel}/>
   
@@ -17,7 +18,7 @@ const Orders = ({navigation}) => {
   }
 
   useEffect( () => {
-    dispatch(getOrders)
+    dispatch(getOrders())
   }, [])
   
   return (

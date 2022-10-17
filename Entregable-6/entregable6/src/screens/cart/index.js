@@ -21,8 +21,8 @@ const Cart = ({navigation}) => {
   }
 
   const goToPayment = () => {
-    dispatch(confirmCart())
-    navigation.navigate('Payment')
+    dispatch(confirmCart(items, total))
+    navigation.navigate('OrdersTab')
   }
 
   return (
@@ -34,15 +34,15 @@ const Cart = ({navigation}) => {
           style = {styles.containerList}
           />
         </View>
-        <View style = {styles.footer}>
+        <View>
             <TouchableOpacity 
               style = {items.length === 0 ? styles.disabledButtonConfirm :styles.buttonConfirm}
               onPress = {goToPayment}
               disabled = {items.length === 0}
             >
-              <View style = {styles.footerView}>
-                <Text style = {styles.footerTitle}> Total value of the Order </Text>
-                <Text style = {styles.footerTitle}> ${total} </Text>
+              <View style = {styles.buttonConfirmView}>
+                <Text style = {styles.buttonConfirmTitle}> Total value of the Order </Text>
+                <Text style = {styles.buttonConfirmTitle}> ${total} </Text>
               </View>
             </ TouchableOpacity>
         </View>
