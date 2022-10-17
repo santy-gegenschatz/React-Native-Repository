@@ -30,3 +30,24 @@ export const getOrders = () => {
         }
     }
 }
+
+export const deleteOrder = (id) => {
+    return async (dispatch) => {
+        try {
+            const response = await fetch(`${URL_API}/orders/${id}.json`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type' : 'application/json'
+                }
+            })
+
+            const result = await response.json()
+            dispatch({
+                type: DELETE_ORDERS,
+                id
+            })
+        } catch (e) {
+            console.log(e);
+        }
+    }
+}

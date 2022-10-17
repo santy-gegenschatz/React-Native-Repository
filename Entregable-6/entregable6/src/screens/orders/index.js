@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { View, FlatList } from 'react-native'
 import { styles } from './styles'
 import { useSelector, useDispatch} from 'react-redux' 
-import { getOrders } from '../../store/actions/index'
+import { deleteOrder, getOrders } from '../../store/actions/index'
 import OrderItem from '../../components/order-item'
+import { useFocusEffect } from '@react-navigation/native'
 
 const Orders = ({navigation}) => {
 
@@ -15,11 +16,14 @@ const Orders = ({navigation}) => {
   
   const onCancel = (id) => {
     console.warn(id);
+    dispatch(deleteOrder(id))
   }
 
-  useEffect( () => {
-    dispatch(getOrders())
-  }, [])
+  useFocusEffect(
+    useCallback(() => {
+      dispatch(getOrders())
+    }, [dispatch])
+  )
   
   return (
     <View style = {styles.container}>

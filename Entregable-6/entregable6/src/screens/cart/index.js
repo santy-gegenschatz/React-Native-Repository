@@ -32,6 +32,7 @@ const Cart = ({navigation}) => {
           data = {items}
           renderItem = {renderItem}
           style = {styles.containerList}
+          keyExtractor = {item => item.id.toString()}
           />
         </View>
         <View>
