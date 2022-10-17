@@ -15,7 +15,7 @@ const cartReducer = (state = initialState, action) => {
     switch(action.type) {
         case(ADD_ITEM):
         let updatedCart = []
-        const findIndex = state.items.find( (inCart) => inCart.id === action.id)
+        const findIndex = state.items.find( (inCart) => inCart.id === action.item.id)
         if (findIndex) {
             updatedCart = state.items.map( (item) => {
                 if (item.id === action.item.id) {

@@ -6,5 +6,12 @@ export const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: colors.red,
         margin: 10
+    },
+    title: {
+        fontSize: 22,
+        color: colors.white
+    },
+    subtitle: {
+        fontSize: 18
     }
 })
