@@ -1,9 +1,12 @@
 import React, {useState} from 'react'
 import { View, Text, TouchableOpacity, Button, TextInput, KeyboardAvoidingView} from 'react-native'
+import { useDispatch } from 'react-redux'
 import { colors } from '../../constants/colors.js'
+import { signUp } from '../../store/actions/index'
 import { styles } from './styles.js'
 
 const Auth = ({navigation}) => {
+    const dispatch = useDispatch()
     const [isLogin, setIsLogin] = useState(true)
     const [email, setEmail] = useState(null)
     const [password, setPassword] = useState(null)
@@ -18,6 +21,7 @@ const Auth = ({navigation}) => {
     }
 
     const onHandleSubmit = () => {
+        dispatch(signUp(email, password))
         console.warn(email, password)
     }
 
