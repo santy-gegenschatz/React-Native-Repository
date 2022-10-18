@@ -5,6 +5,8 @@ import { styles } from './styles.js'
 
 const Auth = ({navigation}) => {
     const [isLogin, setIsLogin] = useState(true)
+    const [email, setEmail] = useState(null)
+    const [password, setPassword] = useState(null)
 
     const title = isLogin ? 'Login' : 'Register'
     const message = isLogin ? 'Dont have an account yet ?' : 'Already have an account ?'
@@ -15,6 +17,11 @@ const Auth = ({navigation}) => {
         setIsLogin(!isLogin)
     }
 
+    const onHandleSubmit = () => {
+        console.warn(email, password)
+    }
+
+
     return (
         <KeyboardAvoidingView style = {styles.containerKeyboard} behavior = 'padding'>
             <View style = {styles.container} >
@@ -24,28 +31,31 @@ const Auth = ({navigation}) => {
                     <TextInput 
                         style = {styles.input}
                         placeholder = 'Enter your email'    
+                        value = {email}
                         placeholderTextColor = {colors.grey} 
                         keyboardType = 'email-address'
                         autoCapitalize = 'none'
                         autoCorrect = {false}
-                        onChange = {(text) => console.log(text)}
+                        onChange = {({nativeEvent: {text}}) => setEmail(text)}
                     />
 
                     <Text style = {styles.password} > Password </Text>
                     <TextInput 
                         style = {styles.input}
                         placeholder = 'Enter your password'
+                        value = {password}
                         placeholderTextColor = {colors.grey} 
                         secureTextEntry = {true}
                         autoCapitalize = 'none'
                         autoCorrect = {false}
-                        onChange = {(text) => console.log(text)}
+                        onChange = {({nativeEvent: {text}}) => setPassword(text)}
                     />
 
                     <Button 
                         title = {messageAction}
                         color = {colors.green}
-                        onPress = {() => console.log('press')}
+                        onPress = {onHandleSubmit}
+                        disabled = {!email || !password}
                         />
                     
                     <View style = {styles.prompt}>
