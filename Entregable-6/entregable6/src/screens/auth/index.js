@@ -1,17 +1,24 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { View, Text, TouchableOpacity, Button, TextInput, KeyboardAvoidingView} from 'react-native'
 import { colors } from '../../constants/colors.js'
 import { styles } from './styles.js'
 
 const Auth = ({navigation}) => {
-    const title = 'Register'
-    const message = 'Already have an account ?'
-    const messageAction = 'Register'
-    const messageTarget = 'Log in'
+    const [isLogin, setIsLogin] = useState(true)
+
+    const title = isLogin ? 'Login' : 'Register'
+    const message = isLogin ? 'Dont have an account yet ?' : 'Already have an account ?'
+    const messageAction = isLogin? 'Sign in' : 'Sign up'
+    const messageTarget = isLogin ? 'Sign up' :'Log in'
+
+    const onHandleChangeScreen = () => {
+        setIsLogin(!isLogin)
+    }
+
     return (
         <KeyboardAvoidingView style = {styles.containerKeyboard} behavior = 'padding'>
             <View style = {styles.container} >
-                    <Text style = {styles.title} > This is the login screen</Text>
+                    <Text style = {styles.title} > {title}</Text>
 
                     <Text style = {styles.label} > Email </Text>
                     <TextInput 
@@ -44,7 +51,7 @@ const Auth = ({navigation}) => {
                     <View style = {styles.prompt}>
                         <Text style = {styles.promptMessage}> {message} </Text>
                         <TouchableOpacity
-                            onPress = {() => console.log('change')}
+                            onPress = {onHandleChangeScreen}
                             style = {styles.promptAction}>
                                 <Text style = {styles.promptText}> {messageTarget} </Text>
                         </TouchableOpacity>

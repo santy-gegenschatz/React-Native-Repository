@@ -23,7 +23,8 @@ export const styles = StyleSheet.create({
     title: {
         fontSize: 20,
         fontFamily: 'Pacifico-Regular',
-        textAlign: 'center'
+        textAlign: 'center',
+        marginBottom: 15
     },
     label: {
         margin: 5,
