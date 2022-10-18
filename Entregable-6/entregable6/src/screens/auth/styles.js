@@ -53,6 +53,9 @@ export const styles = StyleSheet.create({
     promptMessage: {
         margin: 5,
         textAlign: 'center'
+    },
+    promptText: {
+        textAlign: 'center'
     }
 
 })

@@ -44,8 +44,9 @@ const Auth = ({navigation}) => {
                     <View style = {styles.prompt}>
                         <Text style = {styles.promptMessage}> {message} </Text>
                         <TouchableOpacity
-                            onPress = {() => console.log('change')}>
-                                <Text style = {styles.promptAction}> {messageTarget} </Text>
+                            onPress = {() => console.log('change')}
+                            style = {styles.promptAction}>
+                                <Text style = {styles.promptText}> {messageTarget} </Text>
                         </TouchableOpacity>
                     </View>
             </View>
