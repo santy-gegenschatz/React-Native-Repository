@@ -5,11 +5,11 @@ import Login from './login'
 import { useSelector } from 'react-redux'
 
 const AppNavigator = () => {
-  const [userId, setUserId] = useState(useSelector( (state) => {
-    console.log(state.auth);
+  const userId = useSelector( (state) => {
+    console.log('Auth: ', state.auth);
     return (state.auth.userId)
-  }))
-  console.log(userId);
+  })
+  
   return (
     <NavigationContainer>
         {userId ? 

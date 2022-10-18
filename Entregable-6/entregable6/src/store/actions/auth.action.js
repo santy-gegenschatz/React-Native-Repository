@@ -24,6 +24,8 @@ export const signUp = (email, password) => {
             }
 
             const data = await response.json()
+            console.log('---');
+            console.log(data);
             dispatch({
                 type: SIGN_UP,
                 token: data.idToken,

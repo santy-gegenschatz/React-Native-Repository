@@ -13,7 +13,7 @@ const Auth = ({navigation}) => {
 
     const title = isLogin ? 'Login' : 'Register'
     const message = isLogin ? 'Dont have an account yet ?' : 'Already have an account ?'
-    const messageAction = isLogin? 'Sign in' : 'Sign up'
+    const messageAction = isLogin ? 'Sign in' : 'Sign up'
     const messageTarget = isLogin ? 'Sign up' :'Log in'
 
     const onHandleChangeScreen = () => {
