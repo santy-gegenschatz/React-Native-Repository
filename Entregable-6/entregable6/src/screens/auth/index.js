@@ -1,9 +1,10 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { View, Text, TouchableOpacity, Button, TextInput, KeyboardAvoidingView} from 'react-native'
 import { useDispatch } from 'react-redux'
 import { colors } from '../../constants/colors.js'
 import { signUp } from '../../store/actions/index'
 import { styles } from './styles.js'
+import { Input } from '../../components'
 
 const Auth = ({navigation}) => {
     const dispatch = useDispatch()
@@ -31,9 +32,9 @@ const Auth = ({navigation}) => {
             <View style = {styles.container} >
                     <Text style = {styles.title} > {title}</Text>
 
-                    <Text style = {styles.label} > Email </Text>
-                    <TextInput 
+                    <Input 
                         style = {styles.input}
+                        label = 'Email'
                         placeholder = 'Enter your email'    
                         value = {email}
                         placeholderTextColor = {colors.grey} 
@@ -43,9 +44,9 @@ const Auth = ({navigation}) => {
                         onChange = {({nativeEvent: {text}}) => setEmail(text)}
                     />
 
-                    <Text style = {styles.password} > Password </Text>
-                    <TextInput 
+                    <Input 
                         style = {styles.input}
+                        label = 'password'
                         placeholder = 'Enter your password'
                         value = {password}
                         placeholderTextColor = {colors.grey} 

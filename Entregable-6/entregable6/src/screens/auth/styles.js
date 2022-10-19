@@ -18,7 +18,8 @@ export const styles = StyleSheet.create({
         borderColor: colors.black,
         borderRadius: 25,
         borderStyle: '',
-        padding: 20
+        padding: 20,
+        height: 400
     },
     title: {
         fontSize: 20,
