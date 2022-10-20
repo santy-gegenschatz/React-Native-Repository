@@ -42,11 +42,15 @@ const Auth = ({navigation}) => {
                         autoCapitalize = 'none'
                         autoCorrect = {false}
                         onChange = {({nativeEvent: {text}}) => setEmail(text)}
+                        hasError = {true}
+                        error = 'Email is required'
+                        touched = {true}
+
                     />
 
                     <Input 
                         style = {styles.input}
-                        label = 'password'
+                        label = 'Password'
                         placeholder = 'Enter your password'
                         value = {password}
                         placeholderTextColor = {colors.grey} 
