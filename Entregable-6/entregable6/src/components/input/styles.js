@@ -4,8 +4,8 @@ import { colors } from "../../constants/colors";
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: colors.black,
-        width: 250,
+        backgroundColor: colors.beige,
+        width: 300,
         alignItems: 'center',
         margin: 1
     },
@@ -13,7 +13,7 @@ export const styles = StyleSheet.create({
         margin: 5,
         backgroundColor: colors.white,
         padding: 10,
-        width: '85%',
+        width: '90%',
         borderRadius: 20,
         textAlign: 'center'
     },

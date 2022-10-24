@@ -1,17 +1,42 @@
-import React, { useState } from 'react'
+import React, { useReducer, useState } from 'react'
 import { View, Text, TouchableOpacity, Button, TextInput, KeyboardAvoidingView} from 'react-native'
 import { useDispatch } from 'react-redux'
 import { colors } from '../../constants/colors.js'
 import { signUp } from '../../store/actions/index'
 import { styles } from './styles.js'
 import { Input } from '../../components'
+import { UPDATED_FORM } from '../../utils/forms.js'
+
+const initialState = {
+    email: {value: '', error: '', touched: false, hasError: true},
+    password: {value: '', error: '', touched: false, hasError: true},
+    isFormValid: false
+}
+
+const formReducer = (state, action) => {
+    switch(action.type) {
+        case UPDATED_FORM:
+        const { name, value, hasError, error, touched, isFormValid } = action.data
+            return {
+                ...state,
+                [name]: {
+                    ...state[name],
+                    value,
+                    hasError,
+                    error,
+                    touched,
+                },
+                isFormValid
+            }
+        default:
+            return state
+    }
+}
 
 const Auth = ({navigation}) => {
     const dispatch = useDispatch()
     const [isLogin, setIsLogin] = useState(true)
-    const [email, setEmail] = useState(null)
-    const [password, setPassword] = useState(null)
-
+    const [formState, dispatchFormState] = useReducer(formReducer, initialState)
     const title = isLogin ? 'Login' : 'Register'
     const message = isLogin ? 'Dont have an account yet ?' : 'Already have an account ?'
     const messageAction = isLogin ? 'Sign in' : 'Sign up'
@@ -21,8 +46,12 @@ const Auth = ({navigation}) => {
         setIsLogin(!isLogin)
     }
 
+    const onHandleTextChange = (value, type) => {
+
+    } 
+
     const onHandleSubmit = () => {
-        dispatch(signUp(email, password))
+        dispatch(signUp(formState.email.value, formState.password.value))
         console.warn(email, password)
     }
 
@@ -36,35 +65,37 @@ const Auth = ({navigation}) => {
                         style = {styles.input}
                         label = 'Email'
                         placeholder = 'Enter your email'    
-                        value = {email}
+                        value = {formState.email.value}
                         placeholderTextColor = {colors.grey} 
                         keyboardType = 'email-address'
                         autoCapitalize = 'none'
                         autoCorrect = {false}
-                        onChange = {({nativeEvent: {text}}) => setEmail(text)}
-                        hasError = {true}
-                        error = 'Email is required'
-                        touched = {true}
-
+                        onChange = {({nativeEvent: {text}}) => onHandleTextChange(text, 'email')}
+                        hasError = {formState.email.hasError}
+                        error = {formState.email.error}
+                        touched = {formState.email.touched}
                     />
 
                     <Input 
                         style = {styles.input}
                         label = 'Password'
                         placeholder = 'Enter your password'
-                        value = {password}
+                        value = {formState.password.value}
                         placeholderTextColor = {colors.grey} 
                         secureTextEntry = {true}
                         autoCapitalize = 'none'
                         autoCorrect = {false}
-                        onChange = {({nativeEvent: {text}}) => setPassword(text)}
+                        onChange = {({nativeEvent: {text}}) => onHandleTextChange(text, 'password')}
+                        hasError = {formState.password.hasError}
+                        error = {formState.password.error}
+                        touched = {formState.password.touched}
                     />
 
                     <Button 
                         title = {messageAction}
                         color = {colors.green}
                         onPress = {onHandleSubmit}
-                        disabled = {!email || !password}
+                        disabled = {!formState.isFormValid}
                         />
                     
                     <View style = {styles.prompt}>

@@ -4,12 +4,12 @@ import { colors } from "../../constants/colors";
 export const styles = StyleSheet.create({
     container: {
         marginTop: 10,
-        backgroundColor: colors.blue,
-        width: '80%',
+        backgroundColor: colors.beige,
+        width: '90%',
         alignItems: 'center'
     },
     labelText: {
-        backgroundColor: colors.red,
+        backgroundColor: colors.beige,
         textAlign: 'center'
     }
 })
