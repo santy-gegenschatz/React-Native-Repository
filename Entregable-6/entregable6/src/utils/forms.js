@@ -2,14 +2,14 @@ const formatEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))
 
 const minPasswordLength = 6;
 
-export const validateiNPUT = (name, value) => {
+export const validateInput = (name, value) => {
     let hasError = false
     let error = ''
     switch(name) {
         case 'email':
             if (value.trim() === '') {
                 hasError = true
-                error: `The ${name} field must be complete`
+                error = `The ${name} field must be complete`
             } else if (!formatEmail(value)){
                 hasError = true
                 error = 'The email format is not valid'
@@ -17,14 +17,30 @@ export const validateiNPUT = (name, value) => {
                 hasError = false
                 error = ''
             }
+            break;
+
         case 'password':
-
-
+            if (value.trim() === '') {
+                hasError = true,
+                error = `The ${name} field must be complete` 
+            } else if (value.length <= minPasswordLength) {
+                hasError = true
+                error = 'The password must have 7 or more characters'
+            } else {
+                hasError = false
+                error = ''
+            }
+            break;
+        default:
+            break;
     }
+
+    return {hasError, error}
 }
 
 export const UPDATED_FORM = 'UPDATED_FORM'
 
 export const onInputChange = (name, value, dispatch, formState) => {
-
+    const { hasError, error } = validateInput(name, value) 
+    
 }
