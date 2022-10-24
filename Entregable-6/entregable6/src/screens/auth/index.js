@@ -47,7 +47,9 @@ const Auth = ({navigation}) => {
     }
 
     const onHandleTextChange = (value, type) => {
-
+        onInputChange(type, value, dispatchFormState, formState) {
+            
+        }
     } 
 
     const onHandleSubmit = () => {
