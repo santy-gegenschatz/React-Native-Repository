@@ -18,8 +18,10 @@ const Product = ({navigation}) => {
         <View style = {styles.container}>
             {/* We will create a button with a Touchable Opacity, to give it more characteristics */}
             <View style = {styles.itemContainer}>
-                <Text style = {styles.description}> {selectedProduct.title} </Text>
-                <Text style = {styles.description}> {selectedProduct.description} </Text>
+                <Text style = {styles.title}> {selectedProduct.title} </Text>
+                <Text style = {styles.descriptionText}> {selectedProduct.description} </Text>
+                <Text style = {styles.priceText}> {selectedProduct.price} USD </Text>
+                <Text style = {styles.weightText}> {selectedProduct.weight} </Text>
             </View>
             <Button 
                 title = 'Add to cart'

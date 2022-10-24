@@ -4,12 +4,36 @@ import { colors } from "../../constants/colors";
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: colors.grey,
-        justifyContent: 'center',
+        backgroundColor: colors.beige,
+        justifyContent: 'space-between',
         alignItems: 'center'
     },
     title: {
         fontSize: 30,
-        fontFamily: 'Pacifico-Regular'
+        fontFamily: 'Pacifico-Regular',
+        color: colors.black
+    },
+    imageContainer: {
+        backgroundColor: colors.red,
+        width: 350,
+        heigh: 200,
+        flex: 1
+    },
+    chooseImageButton: {
+        backgroundColor: colors.pink,
+        margin: 20,
+        padding: 10
+    },
+    buttonText: {
+        color: colors.white
+    },
+    logOutButton: {
+        width: '80%',
+        backgroundColor: colors.red,
+        height: 50,
+        borderRadius: 20,
+        justifyContent: "center",
+        alignItems: 'center',
+        margin: 10
     }
 })
