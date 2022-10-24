@@ -5,13 +5,12 @@ import { styles } from './styles.js'
 const Label = ({
     label,
     children,
-    style,
     subLabel,
     subLabelStyle
 }) => {
     return (
         <View style = {styles.container}>
-            <Text style = {[style.label, style]}> {label} </Text>
+            <Text style = {styles.labelText}> {label} </Text>
             {children}
             {subLabel && <Text style = {[styles.subLabel, subLabelStyle]}> {subLabel} </Text> }
         </View>

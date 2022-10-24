@@ -14,6 +14,9 @@ const Input = ({
     placeholder,
     placeholderTextColor,
     keyboardType,
+    hasError,
+    error,
+    touched,
     ...props
 }) => {
     return (
@@ -32,6 +35,11 @@ const Input = ({
                 keyboardType = {keyboardType}
                 />
             </Label>
+            { hasError && touched && 
+                <View style = {styles.messageContainer}>
+                    <Text style = {styles.errorText}> {error}</Text>
+                </View>
+            }
         </View>
     )
 }
