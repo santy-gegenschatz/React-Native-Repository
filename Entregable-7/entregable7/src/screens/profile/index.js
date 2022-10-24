@@ -1,19 +1,13 @@
 import React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native' 
+import {ImageSelector} from '../../components/index'
 import { styles } from './styles'
 
 const Profile = ({navigation}) => {
     return (
         <View style = {styles.container}>
             <Text style = {styles.title}> Press the button below to pick a new Profile Image </Text>
-            
-            <View style = {styles.imageContainer} >
-            </View>
-
-            <TouchableOpacity style = {styles.chooseImageButton}> 
-                <Text> Choose Image </Text>
-            </TouchableOpacity>
-
+            <ImageSelector onImage = {() => null }/>
             <TouchableOpacity style = {styles.logOutButton}>
                 <Text> Log out </Text> 
             </TouchableOpacity>
