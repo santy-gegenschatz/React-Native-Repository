@@ -2,10 +2,10 @@ import React, { useReducer, useState } from 'react'
 import { View, Text, TouchableOpacity, Button, TextInput, KeyboardAvoidingView} from 'react-native'
 import { useDispatch } from 'react-redux'
 import { colors } from '../../constants/colors.js'
-import { signUp } from '../../store/actions/index'
+import { signIn, signUp } from '../../store/actions/index'
 import { styles } from './styles.js'
 import { Input } from '../../components'
-import { UPDATED_FORM } from '../../utils/forms.js'
+import { UPDATED_FORM, onInputChange, onFocusOut } from '../../utils/forms.js'
 
 const initialState = {
     email: {value: '', error: '', touched: false, hasError: true},
@@ -47,16 +47,21 @@ const Auth = ({navigation}) => {
     }
 
     const onHandleTextChange = (value, type) => {
-        onInputChange(type, value, dispatchFormState, formState) {
-            
-        }
+        onInputChange(type, value, dispatchFormState, formState)
     } 
 
     const onHandleSubmit = () => {
-        dispatch(signUp(formState.email.value, formState.password.value))
-        console.warn(email, password)
+        const { email, password } = formState
+        isLogin ?
+        dispatch(signIn(email.value, email.password))
+        :
+        dispatch(signUp(email.value, password.value))
     }
 
+    const onHandleBlur = (value, type) => {
+        console.log(value, type);
+        onFocusOut(type, value, dispatchFormState, formState)
+    }
 
     return (
         <KeyboardAvoidingView style = {styles.containerKeyboard} behavior = 'padding'>
@@ -76,6 +81,7 @@ const Auth = ({navigation}) => {
                         hasError = {formState.email.hasError}
                         error = {formState.email.error}
                         touched = {formState.email.touched}
+                        onBlur = {(e) => console.log(e)}
                     />
 
                     <Input 
@@ -91,6 +97,7 @@ const Auth = ({navigation}) => {
                         hasError = {formState.password.hasError}
                         error = {formState.password.error}
                         touched = {formState.password.touched}
+                        onBlur = {(e) => onHandleBlur(e.nativeEvent.text, 'password')}
                     />
 
                     <Button 

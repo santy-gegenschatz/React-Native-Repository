@@ -4,6 +4,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import CartNavigator from "./cart";
 import ShopNavigator from "./shop";
 import OrdersNavigator from './orders'
+import ProfileNavigator from './profile'
 import { colors } from "../constants/colors";
 
 const BottomTab = createBottomTabNavigator()
@@ -40,6 +41,15 @@ const Tabs = () => {
                 options = {{
                     title: 'Cart',
                     tabBarIcon: ({focused}) => { return (<Ionicons name = 'cart' color = {colors.black} size = {22} />)}
+                }}
+            />
+
+            <BottomTab.Screen 
+                name = 'ProfileTab'
+                component = {ProfileNavigator}
+                options = {{
+                    title: 'Settings',
+                    tabBarIcon: ({focused}) => {return (<Ionicons name = 'profile' color = {colors.black} size = {22} />)}
                 }}
             />
     </BottomTab.Navigator>

@@ -36,3 +36,32 @@ export const signUp = (email, password) => {
         }
     }
 }
+
+export const signIn = (email, password) => {
+    return async(dispatch) => {
+        try {
+            const response = await fetch(URL_AUTH_SIGN_UP, {
+                method: 'POST',
+                headers: {
+                    'Content-Type' : 'application/json'
+                },
+                body : JSON.stringify({
+                    email, 
+                    password,
+                    returnSecureToken: true
+                })
+            })
+
+            const data = await response.json()
+            console.log('Result: ', result);
+            dispatch({
+                type: SIGN_IN,
+                token: data.token,
+                id: data.userId
+            })
+
+        } catch (e) {
+            console.log(e);
+        }
+    }
+}
