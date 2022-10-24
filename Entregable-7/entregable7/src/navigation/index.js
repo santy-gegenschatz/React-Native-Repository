@@ -1,15 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import Tabs from './tab'
+import Login from './login'
 import { useSelector } from 'react-redux'
 
 const AppNavigator = () => {
-  console.log(c);
-  const c = useSelector( (state) => state.category.categories)
-  //
+  const userId = useSelector( (state) => {
+    console.log('Auth: ', state.auth);
+    return (state.auth.userId)
+  })
+  
   return (
     <NavigationContainer>
-        <Tabs />
+        {userId ? 
+        <Tabs /> :
+        <Login />
+        }
+
     </NavigationContainer>
   )
 }

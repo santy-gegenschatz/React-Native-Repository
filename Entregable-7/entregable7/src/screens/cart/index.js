@@ -1,14 +1,17 @@
 import React from 'react'
 import { View, TouchableOpacity, FlatList, Text } from 'react-native'
-import CartItem from '../../components/cart-item'
-import { cart } from '../../constants/data/cart'
+import { useDispatch, useSelector } from 'react-redux'
 import { styles } from './styles'
+import CartItem from '../../components/cart-item'
+import { confirmCart, removeItem } from '../../store/actions/cart.actions'
 
 const Cart = ({navigation}) => {
-  const total = 200;
+  const dispatch = useDispatch()
+  const items = useSelector(state => state.cart.items)
+  const total = useSelector(state => state.cart.total)
 
   const onDelete = (id) => {
-    console.warn(id)
+    dispatch(removeItem(id))
   }
 
   const renderItem = ({item}) => {
@@ -18,26 +21,29 @@ const Cart = ({navigation}) => {
   }
 
   const goToPayment = () => {
-    navigation.navigate('Payment')
+    dispatch(confirmCart(items, total))
+    navigation.navigate('OrdersTab')
   }
 
   return (
     <View style = {styles.container}>
         <View style = {styles.containerList}>
           <FlatList 
-          data = {cart}
+          data = {items}
           renderItem = {renderItem}
           style = {styles.containerList}
+          keyExtractor = {item => item.id.toString()}
           />
         </View>
-        <View style = {styles.footer}>
+        <View>
             <TouchableOpacity 
-              style = {styles.buttonConfirm}
+              style = {items.length === 0 ? styles.disabledButtonConfirm :styles.buttonConfirm}
               onPress = {goToPayment}
+              disabled = {items.length === 0}
             >
-              <View style = {styles.footerView}>
-                <Text style = {styles.footerTitle}> Total value of the Order </Text>
-                <Text style = {styles.footerTitle}> ${total} </Text>
+              <View style = {styles.buttonConfirmView}>
+                <Text style = {styles.buttonConfirmTitle}> Total value of the Order </Text>
+                <Text style = {styles.buttonConfirmTitle}> ${total} </Text>
               </View>
             </ TouchableOpacity>
         </View>

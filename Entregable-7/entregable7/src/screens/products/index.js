@@ -21,9 +21,6 @@ const Products = ({navigation}) => {
     })
 
     console.log('Products filtered: ' ,productsFiltered);
-    const navigateToProduct = () => {
-        navigation.navigate('Product')
-    }
 
     useEffect( () => {
         console.log('1, useEffect');
@@ -46,7 +43,6 @@ const Products = ({navigation}) => {
 
     return (
         <View style = {styles.products__main__view}>
-            <Text style = {styles.products__text}> This is the Products screen </Text>
             <FlatList
                 data = {productsFiltered}
                 renderItem = {renderItem}
@@ -54,12 +50,6 @@ const Products = ({navigation}) => {
                 style = {styles.flatlist}
                 >
             </FlatList>
-            <View style = {styles.products__button__view}>
-                <Button 
-                title = 'Go to Product'
-                onPress={navigateToProduct}
-                />
-            </View>
         </View>
     )
 }
