@@ -43,7 +43,6 @@ const Products = ({navigation}) => {
 
     return (
         <View style = {styles.products__main__view}>
-            <Text style = {styles.products__text}> This is the Products screen </Text>
             <FlatList
                 data = {productsFiltered}
                 renderItem = {renderItem}

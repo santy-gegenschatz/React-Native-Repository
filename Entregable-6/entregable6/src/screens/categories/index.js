@@ -18,15 +18,12 @@ const Categories = ({navigation, route}) => {
     }
 
     const onSelected = (item) => {
-        console.log('3: select category action');
         dispatch(selectCategory(item.id))
-        console.log('5: navigating');
         navigation.navigate('Products')
     }
 
     return (
         <View style = {styles.categories__main__view}>
-            <Text style = {styles.categories__text}> This is the Categories screen </Text>
                 <FlatList 
                     data = {categories}
                     renderItem = {renderItem}

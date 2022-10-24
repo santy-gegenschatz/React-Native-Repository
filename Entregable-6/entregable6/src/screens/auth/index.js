@@ -1,5 +1,5 @@
 import React, { useReducer, useState } from 'react'
-import { View, Text, TouchableOpacity, Button, TextInput, KeyboardAvoidingView} from 'react-native'
+import { View, Text, TouchableOpacity, Button, KeyboardAvoidingView} from 'react-native'
 import { useDispatch } from 'react-redux'
 import { colors } from '../../constants/colors.js'
 import { signIn, signUp } from '../../store/actions/index'
@@ -53,7 +53,7 @@ const Auth = ({navigation}) => {
     const onHandleSubmit = () => {
         const { email, password } = formState
         isLogin ?
-        dispatch(signIn(email.value, email.password))
+        dispatch(signIn(email.value, password.value))
         :
         dispatch(signUp(email.value, password.value))
     }
@@ -81,7 +81,7 @@ const Auth = ({navigation}) => {
                         hasError = {formState.email.hasError}
                         error = {formState.email.error}
                         touched = {formState.email.touched}
-                        onBlur = {(e) => console.log(e)}
+                        onBlur = {(e) => console.log('Hello')}
                     />
 
                     <Input 

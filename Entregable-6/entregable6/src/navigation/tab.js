@@ -49,7 +49,7 @@ const Tabs = () => {
                 component = {ProfileNavigator}
                 options = {{
                     title: 'Settings',
-                    tabBarIcon: ({focused}) => {return (<Ionicons name = 'profile' color = {colors.black} size = {22} />)}
+                    tabBarIcon: ({focused}) => {return (<Ionicons name = 'settings' color = {colors.black} size = {22} />)}
                 }}
             />
     </BottomTab.Navigator>

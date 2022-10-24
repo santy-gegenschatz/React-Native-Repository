@@ -16,9 +16,8 @@ const Product = ({navigation}) => {
     
     return (
         <View style = {styles.container}>
-            <Text style = {styles.title}> This is the Product screen </Text>
             {/* We will create a button with a Touchable Opacity, to give it more characteristics */}
-            <View style = {styles.itemProperties}>
+            <View style = {styles.itemContainer}>
                 <Text style = {styles.description}> {selectedProduct.title} </Text>
                 <Text style = {styles.description}> {selectedProduct.description} </Text>
             </View>

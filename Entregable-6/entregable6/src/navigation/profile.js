@@ -15,3 +15,5 @@ const ProfileNavigator = () => {
         </Stack.Navigator>
     )
 }
+
+export default ProfileNavigator
