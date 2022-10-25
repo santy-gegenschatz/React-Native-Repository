@@ -11,7 +11,8 @@ export const styles = StyleSheet.create({
     title: {
         fontSize: 30,
         fontFamily: 'Pacifico-Regular',
-        color: colors.black
+        color: colors.black,
+        textAlign: 'center'
     },
     imageContainer: {
         backgroundColor: colors.red,

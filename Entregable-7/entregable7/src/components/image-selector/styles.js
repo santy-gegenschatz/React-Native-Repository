@@ -6,7 +6,8 @@ export const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        margin: 10
+        margin: 10,
+        backgroundColor: colors.grey
     },
     preview: {
         backgroundColor: colors.blue,
