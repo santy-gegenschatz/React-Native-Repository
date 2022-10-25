@@ -1,4 +1,4 @@
-import { userTypes } from "../types/inde";
+import { userTypes } from "../types/index";
 import * as FileSystem from 'expo-file-system'
 
 const { SAVE_PROFILE_IMAGE } = userTypes;
