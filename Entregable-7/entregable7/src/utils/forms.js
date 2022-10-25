@@ -7,7 +7,7 @@ export const validateInput = (name, value) => {
     let error = ''
     switch(name) {
         case 'email':
-            if (value.trim() === '') {
+            if (value?.trim() === '') {
                 hasError = true
                 error = `The ${name} field must be complete`
             } else if (!formatEmail.test(value)){
@@ -20,7 +20,7 @@ export const validateInput = (name, value) => {
             break;
 
         case 'password':
-            if (value.trim() === '') {
+            if (value?.trim() === '') {
                 hasError = true,
                 error = `The ${name} field must be complete` 
             } else if (value.length <= minPasswordLength) {

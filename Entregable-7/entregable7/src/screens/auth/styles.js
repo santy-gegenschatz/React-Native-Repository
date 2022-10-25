@@ -17,7 +17,6 @@ export const styles = StyleSheet.create({
         borderWidth: 4,
         borderColor: colors.black,
         borderRadius: 25,
-        borderStyle: '',
         padding: 20,
         height: 400
     },

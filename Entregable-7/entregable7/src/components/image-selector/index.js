@@ -1,22 +1,49 @@
 import React, { useState } from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity, Image } from 'react-native'
+import * as ImagePicker from 'expo-image-picker'
 import { colors } from '../../constants/colors'
 import { styles } from './styles'
 
 const ImageSelector = ({onImage}) => {
     const [pickedUrl, setPickedUrl] = useState()
+
+    const verifyPermissions = async () => {
+        const { status } = await ImagePicker.requestCameraPermissionsAsync
+        // if (status !== 'granted') {
+        //     Alert.alert('You do not have the permissions to use the camera')
+        //     return false
+        // }
+        return true
+    }
+
+    const onHandleTakePhoto = async () => {
+        const hasPermission = await verifyPermissions()
+        if (!hasPermission) {
+            return 
+        }
+
+        const image = await ImagePicker.launchCameraAsync({
+            allowsEditing: true,
+            aspect: [1, 1],
+            quality: 0.5
+        })
+
+        setPickedUrl(image.uri)
+        onImage(image.uri)
+    }
+
     return (
     <View style = {styles.container}>
-        <Text style = {styles.preview}>
+        <View style = {styles.preview}>
             {!pickedUrl ?
-                <Text> </Text>
+                <Text style = {styles.warningText}> No image picked yet</Text>
             :
                 <Image style = {styles.image} source = {{uri: pickedUrl}} /> 
             }
-        </Text>
+        </View>
         <TouchableOpacity 
             style = {styles.chooseImageButton}
-            onPress = {onImage}
+            onPress = {onHandleTakePhoto}
         > 
                 <Text> Choose Image </Text>
             </TouchableOpacity>
