@@ -19,7 +19,7 @@ export const styles = StyleSheet.create({
         heigh: 200,
         flex: 1
     },
-    chooseImageButton: {
+    saveImageButton: {
         backgroundColor: colors.pink,
         margin: 20,
         padding: 10
