@@ -1,4 +1,4 @@
-import userTypes from '../types/index'
+import { userTypes } from '../types/index'
 
 const { SAVE_PROFILE_IMAGE } = userTypes;
 

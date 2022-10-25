@@ -21,7 +21,7 @@ export const styles = StyleSheet.create({
     },
     saveImageButton: {
         backgroundColor: colors.pink,
-        margin: 20,
+        margin: 5,
         padding: 10
     },
     buttonText: {

@@ -6,6 +6,7 @@ import { signIn, signUp } from '../../store/actions/index'
 import { styles } from './styles.js'
 import { Input } from '../../components'
 import { UPDATED_FORM, onInputChange, onFocusOut } from '../../utils/forms.js'
+import { Platform } from 'react-native'
 
 const initialState = {
     email: {value: '', error: '', touched: false, hasError: true},
@@ -35,7 +36,7 @@ const formReducer = (state, action) => {
 
 const Auth = ({navigation}) => {
     const dispatch = useDispatch()
-    const [isLogin, setIsLogin] = useState(true)
+    const [isLogin, setIsLogin] = useState(false)
     const [formState, dispatchFormState] = useReducer(formReducer, initialState)
     const title = isLogin ? 'Login' : 'Register'
     const message = isLogin ? 'Dont have an account yet ?' : 'Already have an account ?'
@@ -64,7 +65,7 @@ const Auth = ({navigation}) => {
     }
 
     return (
-        <KeyboardAvoidingView style = {styles.containerKeyboard} behavior = 'padding'>
+        <KeyboardAvoidingView style = {styles.containerKeyboard} behavior= {(Platform.OS === 'ios')? "padding" : null}>
             <View style = {styles.container} >
                     <Text style = {styles.title} > {title}</Text>
 
