@@ -66,8 +66,9 @@ const Auth = ({navigation}) => {
 
     return (
         <KeyboardAvoidingView style = {styles.containerKeyboard} behavior= {(Platform.OS === 'ios')? "padding" : null}>
+            <Text style = {styles.title}> 🍁 The Spring Store 🍁</Text>
             <View style = {styles.container} >
-                    <Text style = {styles.title} > {title}</Text>
+                    <Text style = {styles.subtitle} > {title}</Text>
 
                     <Input 
                         style = {styles.input}
@@ -82,7 +83,6 @@ const Auth = ({navigation}) => {
                         hasError = {formState.email.hasError}
                         error = {formState.email.error}
                         touched = {formState.email.touched}
-                        onBlur = {(e) => console.log('Hello')}
                     />
 
                     <Input 
@@ -98,7 +98,6 @@ const Auth = ({navigation}) => {
                         hasError = {formState.password.hasError}
                         error = {formState.password.error}
                         touched = {formState.password.touched}
-                        onBlur = {(e) => onHandleBlur(e.nativeEvent.text, 'password')}
                     />
 
                     <Button 

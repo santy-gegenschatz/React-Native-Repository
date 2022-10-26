@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity } from 'react-native'
 import { useSelector } from 'react-redux'
 import {ImageSelector} from '../../components/index'
 import { saveProfileImage } from '../../store/actions/index'
+import { ProfileComponent } from '../../components/index'
 import { styles } from './styles'
 
 const Profile = ({navigation}) => {
@@ -20,15 +21,7 @@ const Profile = ({navigation}) => {
 
     return (
         <View style = {styles.container}>
-            <Text style = {styles.title}> Press the button below to pick a new Profile Image </Text>
-            <ImageSelector onImage = {onHandlerImage}/>
-            <TouchableOpacity 
-                style = {styles.saveImageButton}
-                onPress = {onHandleSubmit}
-            >
-                <Text> Save Image </Text> 
-            </TouchableOpacity>
-
+            <ProfileComponent imageUri = '' userName = {''} userEmail = 'john@appleseed.com'/>
             <TouchableOpacity 
                 style = {styles.logOutButton}
             >

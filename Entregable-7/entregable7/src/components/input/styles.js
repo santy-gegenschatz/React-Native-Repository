@@ -3,11 +3,10 @@ import { colors } from "../../constants/colors";
 
 export const styles = StyleSheet.create({
     container: {
-        flex: 1,
         backgroundColor: colors.beige,
         width: 300,
         alignItems: 'center',
-        margin: 1
+        margin: 5
     },
     input: {
         margin: 5,
@@ -23,5 +22,8 @@ export const styles = StyleSheet.create({
     labelText: {
         backgroundColor: colors.beige,
         textAlign: 'center'
+    },
+    messageContainer: {
+        backgroundColor: colors.grey,
     }
 })

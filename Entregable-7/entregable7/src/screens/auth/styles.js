@@ -12,19 +12,23 @@ export const styles = StyleSheet.create({
         width: '90%',
         maxWidth: 400,
         backgroundColor: colors.beige,
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
         alignItems: 'center',
         borderWidth: 4,
         borderColor: colors.black,
         borderRadius: 25,
-        padding: 20,
-        height: 400
+        padding: 5,
+        height: 340
     },
     title: {
-        fontSize: 20,
+        fontSize: 30,
         fontFamily: 'Pacifico-Regular',
         textAlign: 'center',
-        marginBottom: 15
+        marginBottom: 10
+    },
+    subtitle: {
+        fontSize: 22,
+        fontWeight: 'bold'
     },
     label: {
         margin: 5,
