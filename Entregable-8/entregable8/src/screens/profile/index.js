@@ -1,19 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { View, Text, TouchableOpacity } from 'react-native' 
+import { useSelector } from 'react-redux'
 import {ImageSelector} from '../../components/index'
+import { saveProfileImage } from '../../store/actions/index'
+import { ProfileComponent } from '../../components/index'
 import { styles } from './styles'
 
 const Profile = ({navigation}) => {
-
-    const onHandleImage = (imageUri) => {
-        
-    }
+    const userImage = useSelector(state => state.user.userImage)
+    const userName = useSelector(state => state.user.userName)
 
     return (
         <View style = {styles.container}>
-            <Text style = {styles.title}> Press the button below to pick a new Profile Image </Text>
-            <ImageSelector onImage = {onHandleImage}/>
-            <TouchableOpacity style = {styles.logOutButton}>
+            <ProfileComponent imageUri = {userImage} userName = {userName} userEmail = 'john@appleseed.com'/>
+            <TouchableOpacity 
+                style = {styles.logOutButton}
+            >
                 <Text> Log out </Text> 
             </TouchableOpacity>
         </View>

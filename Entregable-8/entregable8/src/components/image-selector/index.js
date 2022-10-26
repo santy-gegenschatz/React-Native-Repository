@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
-import { View, Text, TouchableOpacity, Image } from 'react-native'
+import { View, Text, TouchableOpacity, Image, TextInput } from 'react-native'
+import { useSelector } from 'react-redux'
 import * as ImagePicker from 'expo-image-picker'
-import { colors } from '../../constants/colors'
 import { styles } from './styles'
 
-const ImageSelector = ({onImage}) => {
+
+const ImageSelector = ({onImage, onText}) => {
     const [pickedUrl, setPickedUrl] = useState()
+    const username = useSelector( state => state.user.userName)
 
     const verifyPermissions = async () => {
         const { status } = await ImagePicker.requestCameraPermissionsAsync
@@ -46,7 +48,16 @@ const ImageSelector = ({onImage}) => {
             onPress = {onHandleTakePhoto}
         > 
                 <Text> Choose Image </Text>
-            </TouchableOpacity>
+        </TouchableOpacity>
+        <View style = {styles.userNameContainer}>
+            <Text> Username </Text>
+            <TextInput 
+                style = {styles.input} 
+                placeholder = {username ? username : 'Enter your username'}
+                onChangeText = {(text) => onText(text)}
+            /> 
+        </View>
+
     </View>
   )
 }

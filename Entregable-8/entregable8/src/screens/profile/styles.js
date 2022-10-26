@@ -11,7 +11,8 @@ export const styles = StyleSheet.create({
     title: {
         fontSize: 30,
         fontFamily: 'Pacifico-Regular',
-        color: colors.black
+        color: colors.black,
+        textAlign: 'center'
     },
     imageContainer: {
         backgroundColor: colors.red,
@@ -19,9 +20,9 @@ export const styles = StyleSheet.create({
         heigh: 200,
         flex: 1
     },
-    chooseImageButton: {
+    saveImageButton: {
         backgroundColor: colors.pink,
-        margin: 20,
+        margin: 5,
         padding: 10
     },
     buttonText: {
