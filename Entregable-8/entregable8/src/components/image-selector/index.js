@@ -5,10 +5,10 @@ import * as ImagePicker from 'expo-image-picker'
 import { styles } from './styles'
 
 
-const ImageSelector = ({onImage, onText}) => {
+const ImageSelector = ({onImage, onText, onAddress}) => {
     const [pickedUrl, setPickedUrl] = useState()
     const username = useSelector( state => state.user.userName)
-
+    const userAddress = 'Maryland'
     const verifyPermissions = async () => {
         const { status } = await ImagePicker.requestCameraPermissionsAsync
         // if (status !== 'granted') {
@@ -55,6 +55,15 @@ const ImageSelector = ({onImage, onText}) => {
                 style = {styles.input} 
                 placeholder = {username ? username : 'Enter your username'}
                 onChangeText = {(text) => onText(text)}
+            /> 
+        </View>
+
+        <View style = {styles.userNameContainer}>
+            <Text> Address </Text>
+            <TextInput 
+                style = {styles.input} 
+                placeholder = {userAddress ? userAddress : 'Enter your address'}
+                onChangeText = {(text) => {onAddress(text)}}
             /> 
         </View>
 

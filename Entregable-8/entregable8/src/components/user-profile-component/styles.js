@@ -38,5 +38,10 @@ export const styles = StyleSheet.create({
         width: '80%',
         height: '80%'
     },
+    addressText: {
+        fontSize: 15,
+        fontStyle: 'italic',
+        marginTop: 20
+    }
 
 })
