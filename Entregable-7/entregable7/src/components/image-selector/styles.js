@@ -3,21 +3,24 @@ import { colors } from "../../constants/colors";
 
 export const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
         alignItems: 'center',
-        margin: 10,
-        backgroundColor: colors.grey
+        margin: 5,
+        backgroundColor: colors.lightGrey,
+        borderRadius: 30,
+        width: '90%',
+        flex: 1
     },
     preview: {
-        backgroundColor: colors.blue,
+        backgroundColor: colors.white,
         justifyContent: 'center',
         alignItems: 'center',
         borderColor: colors.black,
         borderWidth: 1,
-        width: 300,
-        height: 250,
-        margin: 5
+        margin: 5,
+        borderRadius: 25,
+        width: 200,
+        height: 200
     },
     image: {
         width: '100%',
@@ -28,10 +31,16 @@ export const styles = StyleSheet.create({
         margin: 20,
         padding: 10
     },
-    buttonText: {
-        color: colors.white
+    userNameContainer: {
+        justifyContent: 'center',
+        alignItems: 'center'
     },
-    warningText: {
-        color: colors.white
+    input: {
+        margin: 5,
+        backgroundColor: colors.white,
+        padding: 10,
+        width: 200,
+        borderRadius: 20,
+        textAlign: 'center'
     }
 })

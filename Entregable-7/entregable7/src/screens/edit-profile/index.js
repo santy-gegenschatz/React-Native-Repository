@@ -1,18 +1,18 @@
 import React from 'react'
-import {View, Text, Button} from 'react-native'
+import {View, Text, Button, TouchableOpacity} from 'react-native'
 import { ImageSelector } from '../../components'
 import { styles } from './styles'
 
 const EditProfile = () => {
   return (
     <View style = {styles.container}>
-        <Text>
-            The Edit profile screen
-        </Text>
-
         <ImageSelector /> 
-        <Button 
-            title = 'Save Changes' />
+        <TouchableOpacity
+          style = {styles.saveChangesButton}
+          onPress = {() => null} 
+        >
+          <Text style = {styles.buttonText}> Save changes </Text>
+        </TouchableOpacity>
     </View> 
   )
 }
