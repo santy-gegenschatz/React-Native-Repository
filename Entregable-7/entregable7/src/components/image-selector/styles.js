@@ -5,11 +5,9 @@ export const styles = StyleSheet.create({
     container: {
         justifyContent: 'flex-start',
         alignItems: 'center',
-        margin: 5,
         backgroundColor: colors.lightGrey,
         borderRadius: 30,
-        width: '90%',
-        flex: 1
+        width: '90%'
     },
     preview: {
         backgroundColor: colors.white,
@@ -28,7 +26,7 @@ export const styles = StyleSheet.create({
     },
     chooseImageButton: {
         backgroundColor: colors.pink,
-        margin: 20,
+        margin: 10,
         padding: 10
     },
     userNameContainer: {

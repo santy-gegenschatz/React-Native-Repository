@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, Text, Button, TouchableOpacity} from 'react-native'
+import {KeyboardAvoidingView, Text, Button, TouchableOpacity} from 'react-native'
 import { ImageSelector } from '../../components'
 import { useState } from 'react'
 import { styles } from './styles'
@@ -26,7 +26,8 @@ const EditProfile = ({navigation}) => {
   }
 
   return (
-    <View style = {styles.container}>
+
+    <KeyboardAvoidingView style = {styles.containerKeyboard} behavior= {(Platform.OS === 'ios')? "padding" : null}>
         <ImageSelector onImage={onHandlerImage} onText = {onHandlerUserName}/> 
         <TouchableOpacity
           style = {styles.saveChangesButton}
@@ -34,7 +35,7 @@ const EditProfile = ({navigation}) => {
         >
           <Text style = {styles.buttonText}> Save changes </Text>
         </TouchableOpacity>
-    </View> 
+    </KeyboardAvoidingView> 
   )
 }
 

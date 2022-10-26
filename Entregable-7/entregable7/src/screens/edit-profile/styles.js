@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 import { colors } from "../../constants/colors";
 
 export const styles = StyleSheet.create({
-    container: {
+    containerKeyboard: {
         flex: 1,
         backgroundColor: colors.beige,
         justifyContent: 'space-between',
