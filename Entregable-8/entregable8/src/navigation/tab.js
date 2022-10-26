@@ -5,6 +5,7 @@ import CartNavigator from "./cart";
 import ShopNavigator from "./shop";
 import OrdersNavigator from './orders'
 import ProfileNavigator from './profile'
+import FavouritesNavigator from "./favourites";
 import { colors } from "../constants/colors";
 
 const BottomTab = createBottomTabNavigator()
@@ -32,6 +33,15 @@ const Tabs = () => {
                 options = {{
                     title: 'Orders',
                     tabBarIcon: ({focused}) => { return (<Ionicons name = 'file-tray-full' color = {colors.black} size = {22} />)}
+                }}
+            />
+
+            <BottomTab.Screen 
+                name = 'FavouritesTab'
+                component = {FavouritesNavigator}
+                options = {{
+                    title: 'Favourites',
+                    tabBarIcon: ({focused}) => { return (<Ionicons name = 'star' color = {colors.black} size = {22} />)}
                 }}
             />
         
