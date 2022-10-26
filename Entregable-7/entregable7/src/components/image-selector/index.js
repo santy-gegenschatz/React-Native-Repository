@@ -1,19 +1,20 @@
 import React, { useState } from 'react'
 import { View, Text, TouchableOpacity, Image, TextInput } from 'react-native'
+import { useSelector } from 'react-redux'
 import * as ImagePicker from 'expo-image-picker'
 import { styles } from './styles'
 
 
-const ImageSelector = ({onImage}) => {
+const ImageSelector = ({onImage, onText}) => {
     const [pickedUrl, setPickedUrl] = useState()
-    const username = useSelector()
+    const username = useSelector( state => state.user.userName)
 
     const verifyPermissions = async () => {
         const { status } = await ImagePicker.requestCameraPermissionsAsync
-        if (status !== 'granted') {
-            Alert.alert('You do not have the permissions to use the camera')
-            return false
-        }
+        // if (status !== 'granted') {
+        //     Alert.alert('You do not have the permissions to use the camera')
+        //     return false
+        // }
         return true
     }
 
@@ -52,7 +53,8 @@ const ImageSelector = ({onImage}) => {
             <Text> Username </Text>
             <TextInput 
                 style = {styles.input} 
-                placeholder = {'Enter your username'}
+                placeholder = {username ? username : 'Enter your username'}
+                onChangeText = {(text) => onText(text)}
             /> 
         </View>
 

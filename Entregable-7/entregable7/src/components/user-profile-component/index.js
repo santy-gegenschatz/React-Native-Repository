@@ -7,7 +7,7 @@ const ProfileComponent = ({imageUri, userName, userEmail}) => {
         <View style = {styles.container} >
             <View style = {styles.imageContainer}> 
                 { imageUri? 
-                <Image></Image>
+                <Image style = {styles.image} source = {{uri: imageUri}} />
                 :
                 <Text style = {styles.imageText}> User image not selected. Select the edit button to modify it</Text>
                 }

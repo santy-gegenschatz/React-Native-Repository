@@ -7,21 +7,12 @@ import { ProfileComponent } from '../../components/index'
 import { styles } from './styles'
 
 const Profile = ({navigation}) => {
-    const [image, setImage] = useState()
-    const currentImage = useSelector(state => state.user.userImage)
-
-    const onHandlerImage = (imageUri) => {
-        setImage(imageUri)
-    }
-
-    const onHandleSubmit = () => {
-        saveProfileImage(image)
-        console.warn(currentImage);
-    }
+    const userImage = useSelector(state => state.user.userImage)
+    const userName = useSelector(state => state.user.userName)
 
     return (
         <View style = {styles.container}>
-            <ProfileComponent imageUri = '' userName = {''} userEmail = 'john@appleseed.com'/>
+            <ProfileComponent imageUri = {userImage} userName = {userName} userEmail = 'john@appleseed.com'/>
             <TouchableOpacity 
                 style = {styles.logOutButton}
             >

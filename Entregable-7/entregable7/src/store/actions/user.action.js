@@ -1,7 +1,7 @@
 import { userTypes } from "../types/index";
 import * as FileSystem from 'expo-file-system'
 
-const { SAVE_PROFILE_IMAGE } = userTypes;
+const { SAVE_PROFILE_IMAGE, SAVE_USER_NAME } = userTypes;
 
 export const saveProfileImage = (image) => {
     return async (dispatch) => {
@@ -21,3 +21,8 @@ export const saveProfileImage = (image) => {
         }
     }
 }
+
+export const saveUserName = (username) => ({
+    type: SAVE_USER_NAME,
+    username
+})

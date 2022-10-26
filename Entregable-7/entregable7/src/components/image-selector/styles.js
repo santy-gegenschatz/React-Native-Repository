@@ -23,8 +23,8 @@ export const styles = StyleSheet.create({
         height: 200
     },
     image: {
-        width: '100%',
-        height: '100%'
+        width: '80%',
+        height: '80%'
     },
     chooseImageButton: {
         backgroundColor: colors.pink,
@@ -41,6 +41,6 @@ export const styles = StyleSheet.create({
         padding: 10,
         width: 200,
         borderRadius: 20,
-        textAlign: 'center'
+        textAlign: 'center',
     }
 })

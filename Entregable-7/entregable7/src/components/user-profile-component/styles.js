@@ -33,6 +33,10 @@ export const styles = StyleSheet.create({
     },
     imageText: {
         textAlign: 'center'
-    }
+    },
+    image: {
+        width: '80%',
+        height: '80%'
+    },
 
 })
