@@ -4,20 +4,48 @@ import { colors } from "../../constants/colors";
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignContent: 'center',
-        backgroundColor: colors.beige
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        backgroundColor: colors.beige,
     },
-    itemContainer: {
-        backgroundColor: colors.blue,
+    imageContainer: {
+        backgroundColor: colors.black,
+        width: 300,
+        height: 300,
+        alignItems: 'center',
+        width: '100%',
+        justifyContent: 'center'
+    },
+    infoContainer: {
+        backgroundColor: colors.brown,
         justifyContent: 'center',
+        alignItems: 'flex-start',
+        borderRadius: 25,
+        margin: 5,
+        padding: 10,
+        width: '98%',
+    },
+    title: {
+        fontSize: 25,
+        fontWeight: 'bold'
+    },
+    descriptionText: {
+        color: colors.white
+    },
+    priceText: {
+        textAlign: 'center'
+    },
+    addToCartButton: {
+        backgroundColor: colors.green,
+        width: '90%',
         alignItems: 'center',
         borderRadius: 25,
-        margin: 25,
-        padding: 10
+        padding: 20,
+        margin: 10,
     },
-    description: {
-        fontWeight: 'bold',
-        color: colors.white
+    imageText: {
+        fontSize: 30,
+        color: colors.white,
+        fontFamily: 'bold'
     }
 })

@@ -53,6 +53,7 @@ export const signIn = (email, password) => {
             })
 
             const data = await response.json()
+            console.log(data);
             console.log('Result: ', data.token, data.userId);
             dispatch({
                 type: SIGN_IN,
