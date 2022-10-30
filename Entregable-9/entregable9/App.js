@@ -8,7 +8,7 @@ import store from './src/store/'
 
 export default function App() {
   const [loaded] = useFonts({
-    'Pacifico-Regular' : require('../entregable8/assets/fonts/Pacifico-Regular.ttf')
+    'Pacifico-Regular' : require('../entregable9/assets/fonts/Pacifico-Regular.ttf')
   })
   if (!loaded) {
     return <ActivityIndicator />

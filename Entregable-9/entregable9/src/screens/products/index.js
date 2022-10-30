@@ -1,29 +1,16 @@
-import React from 'react'
-import { View, Text, Button, FlatList} from 'react-native'
+import React, { useEffect } from 'react'
+import { View, FlatList} from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
-import {styles} from './styles'
+import { filteredProducts, selectedProduct } from '../../store/actions/index'
 import ProductItem from '../../components/product-item'
-import { useEffect } from 'react'
-import { filteredProducts, selectedProduct } from '../../store/actions/products.action'
+import { styles } from './styles'
 
 const Products = ({navigation}) => {
     const dispatch = useDispatch()
-    const selectedCategory = useSelector( (state) => {
-        console.log("2, select category");
-        return (state.category.selected)
-    })
-    
-    console.log('Selected category: ' ,selectedCategory);
-    const productsFiltered = useSelector( (state) => {
-        console.log('4: products filtered');
-        console.log('inside products filtered: ', state.products.filteredProducts);
-        return (state.products.filteredProducts)
-    })
-
-    console.log('Products filtered: ' ,productsFiltered);
+    const selectedCategory = useSelector( (state) => (state.category.selected))
+    const productsFiltered = useSelector( (state) => (state.products.filteredProducts))
 
     useEffect( () => {
-        console.log('1, useEffect');
         dispatch(filteredProducts(selectedCategory.id))
     }, [])
 
@@ -34,10 +21,7 @@ const Products = ({navigation}) => {
     }
 
     const onSelected = (item) => {
-        console.log('press');
-        console.log(item);
         dispatch(selectedProduct(item.id))
-        console.log('Navigating');
         navigation.navigate('Product')
     }
 
