@@ -3,24 +3,36 @@ import { colors } from "../../constants/colors";
 
 export const styles = StyleSheet.create({
     container: {
-        margin: 14,
-        height: 70,
-        borderRadius: 20,
-        justifyContent: 'center',
-        backgroundColor: colors.green,
         margin: 10,
-        borderRadius: 20
+        height: 300,
+        borderRadius: 20,
+        justifyContent: 'flex-start',
+        backgroundColor: colors.brown,
+        borderRadius: 20,
+        padding: 10
     },
     title: {
         fontSize: 25,
         fontWeight: 'bold',
-        color: colors.white,
+        color: colors.black,
         textAlign: 'center'
     },
     subtitle: {
         fontSize: 19,
-        fontWeight: 'bold',
-        color: colors.white,
+        color: colors.black,
         textAlign: 'center'
+    },
+    image: {
+        width: 300,
+        height: 200
+    },
+    imageContainer: {
+        backgroundColor: colors.black,
+        borderRadius: 20,
+        padding: 10
+    },
+    infoContainer: {
+        justifyContent: 'center',
+        alignItems: 'flex-start'
     }
 })

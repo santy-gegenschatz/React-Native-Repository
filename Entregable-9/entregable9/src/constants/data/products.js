@@ -2,10 +2,10 @@ export const products = [
     {
         id: 1,
         categoryId: 1,
-        title: 'Pan de yema',
-        description: 'clasico y delicioso pan de yema',
-        weight: '60gr',
-        price: 1.00,
+        title: 'Scented Candle',
+        description: 'Classic, yet Stylish',
+        weight: 'New',
+        price: 17,
     },
     {
         id: 2,

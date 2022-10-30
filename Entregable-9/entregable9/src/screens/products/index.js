@@ -9,9 +9,10 @@ const Products = ({navigation}) => {
     const dispatch = useDispatch()
     const selectedCategory = useSelector( (state) => (state.category.selected))
     const productsFiltered = useSelector( (state) => (state.products.filteredProducts))
+    const products = useSelector( (state) => (state.products.products))
 
     useEffect( () => {
-        dispatch(filteredProducts(selectedCategory.id))
+        // dispatch(filteredProducts(selectedCategory.id))
     }, [])
 
     const renderItem= ({item}) => {
@@ -26,9 +27,9 @@ const Products = ({navigation}) => {
     }
 
     return (
-        <View style = {styles.products__main__view}>
+        <View style = {styles.container}>
             <FlatList
-                data = {productsFiltered}
+                data = {products}
                 renderItem = {renderItem}
                 keyExtractor = {item => item.id.toString()}
                 style = {styles.flatlist}

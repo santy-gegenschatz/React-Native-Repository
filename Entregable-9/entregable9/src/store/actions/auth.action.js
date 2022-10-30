@@ -1,4 +1,4 @@
-import { URL_AUTH_SIGN_UP } from "../../constants/firebase";
+import { URL_AUTH_SIGN_UP, URL_AUTH_SIGN_IN } from "../../constants/firebase";
 import { authTypes } from "../types/auth.types";
 
 const { SIGN_IN, SIGN_UP} = authTypes
@@ -40,7 +40,7 @@ export const signUp = (email, password) => {
 export const signIn = (email, password) => {
     return async(dispatch) => {
         try {
-            const response = await fetch(URL_AUTH_SIGN_UP, {
+            const response = await fetch(URL_AUTH_SIGN_IN, {
                 method: 'POST',
                 headers: {
                     'Content-Type' : 'application/json'
@@ -53,7 +53,7 @@ export const signIn = (email, password) => {
             })
 
             const data = await response.json()
-            console.log('Result: ', data);
+            console.log('Result: ', data.token, data.userId);
             dispatch({
                 type: SIGN_IN,
                 token: data.token,
