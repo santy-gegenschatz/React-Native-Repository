@@ -29,7 +29,9 @@ export const styles = StyleSheet.create({
     imageContainer: {
         backgroundColor: colors.black,
         borderRadius: 20,
-        padding: 10
+        padding: 10,
+        alignItems: 'center',
+        height: '80%'
     },
     infoContainer: {
         justifyContent: 'center',
