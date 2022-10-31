@@ -10,42 +10,60 @@ export const styles = StyleSheet.create({
     },
     imageContainer: {
         backgroundColor: colors.black,
-        width: 300,
-        height: 300,
+        width: '100%',
+        height: '50%',
         alignItems: 'center',
         width: '100%',
         justifyContent: 'center'
     },
     infoContainer: {
         backgroundColor: colors.brown,
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         alignItems: 'flex-start',
         borderRadius: 25,
-        margin: 5,
+        marginTop: 5,
         padding: 10,
         width: '98%',
+        height: '48%'
     },
+    headerContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginVertical: 4
+    },
+    buttonContainer: {
+        width: '95%'
+    },  
     title: {
         fontSize: 25,
         fontWeight: 'bold'
     },
-    descriptionText: {
+    priceText: {
+        textAlign: 'center',
+        fontSize: 20,
         color: colors.white
     },
-    priceText: {
-        textAlign: 'center'
-    },
-    addToCartButton: {
-        backgroundColor: colors.green,
-        width: '90%',
-        alignItems: 'center',
-        borderRadius: 25,
-        padding: 20,
-        margin: 10,
+    descriptionText: {
+        marginTop: 5,
+        color: colors.black,
     },
     imageText: {
         fontSize: 30,
         color: colors.white,
-        fontFamily: 'bold'
-    }
+        fontWeight: 'bold'
+    },
+    buttonText: {
+        color: colors.white,
+        fontWeight: 'bold'
+    },
+    addToCartButton: {
+        backgroundColor: colors.green,
+        width: '95%',
+        alignItems: 'center',
+        borderRadius: 12,
+        padding: 20,
+        margin: 10,
+    },
+
 })

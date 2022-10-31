@@ -3,7 +3,7 @@ export const products = [
         id: 1,
         categoryId: 1,
         title: 'Scented Candle',
-        description: 'Classic, yet Stylish',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad mi',
         weight: 'New',
         price: 17,
     },
