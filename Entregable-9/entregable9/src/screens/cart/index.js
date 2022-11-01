@@ -3,6 +3,7 @@ import { View, TouchableOpacity, FlatList, Text } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { styles } from './styles'
 import CartItem from '../../components/cart-item'
+import { EmptyCartComponent } from '../../components/index'
 import { confirmCart, removeItem } from '../../store/actions/cart.actions'
 
 const Cart = ({navigation}) => {
@@ -27,15 +28,16 @@ const Cart = ({navigation}) => {
 
   return (
     <View style = {styles.container}>
-        <View style = {styles.containerList}>
-          <FlatList 
-          data = {items}
-          renderItem = {renderItem}
-          style = {styles.containerList}
-          keyExtractor = {item => item.id.toString()}
-          />
-        </View>
-        <View>
+      {items.length !== 0?
+        <View style = {styles.fullCartContainer}>
+          <View style = {styles.listContainer}>
+            <FlatList 
+            data = {items}
+            renderItem = {renderItem}
+            style = {styles.listContainer}
+            keyExtractor = {item => item.id.toString()}
+            />
+          </View>
             <TouchableOpacity 
               style = {items.length === 0 ? styles.disabledButtonConfirm :styles.buttonConfirm}
               onPress = {goToPayment}
@@ -47,6 +49,11 @@ const Cart = ({navigation}) => {
               </View>
             </ TouchableOpacity>
         </View>
+      :
+        <View style = {styles.emptyCartContainer}>
+          <EmptyCartComponent navigation = {navigation}/>
+        </View>
+      }
     </View>
   )
 }
