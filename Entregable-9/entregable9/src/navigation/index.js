@@ -6,7 +6,6 @@ import { useSelector } from 'react-redux'
 
 const AppNavigator = () => {
   const userId = useSelector( (state) => {
-    console.log('Auth: ', state.auth);
     return (state.auth.userId)
   })
   

@@ -1,7 +1,7 @@
 import { URL_AUTH_SIGN_UP, URL_AUTH_SIGN_IN } from "../../constants/firebase";
 import { authTypes } from "../types/auth.types";
 
-const { SIGN_IN, SIGN_UP} = authTypes
+const { SIGN_IN, SIGN_UP, LOG_OUT} = authTypes
 
 export const signUp = (email, password) => {
     return async (dispatch) => {
@@ -24,8 +24,6 @@ export const signUp = (email, password) => {
             }
 
             const data = await response.json()
-            console.log('---');
-            console.log(data);
             dispatch({
                 type: SIGN_UP,
                 token: data.idToken,
@@ -52,13 +50,20 @@ export const signIn = (email, password) => {
                 })
             })
 
+            if (!response.ok) {
+                console.log(response);
+                throw new Error ('Something went wrong')
+            }
+
             const data = await response.json()
+            console.log('---');
             console.log(data);
-            console.log('Result: ', data.token, data.userId);
+            console.log('---');
+            console.log('Result: ', data.idToken, data.localId);
             dispatch({
                 type: SIGN_IN,
-                token: data.token,
-                id: data.userId
+                token: data.idToken,
+                id: data.localId
             })
 
         } catch (e) {
@@ -66,3 +71,7 @@ export const signIn = (email, password) => {
         }
     }
 }
+
+export const logOut = () => ({
+    type: LOG_OUT,
+})

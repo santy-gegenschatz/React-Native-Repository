@@ -36,7 +36,7 @@ const formReducer = (state, action) => {
 
 const Auth = ({navigation}) => {
     const dispatch = useDispatch()
-    const [isLogin, setIsLogin] = useState(false)
+    const [isLogin, setIsLogin] = useState(true)
     const [formState, dispatchFormState] = useReducer(formReducer, initialState)
     const title = isLogin ? 'Login' : 'Register'
     const message = isLogin ? 'Dont have an account yet ?' : 'Already have an account ?'
@@ -53,6 +53,8 @@ const Auth = ({navigation}) => {
 
     const onHandleSubmit = () => {
         const { email, password } = formState
+        console.log('Email: ', email.value);
+        console.log('Password: ', password.value);
         isLogin ?
         dispatch(signIn(email.value, password.value))
         :

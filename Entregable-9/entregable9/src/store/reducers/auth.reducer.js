@@ -1,6 +1,6 @@
 import { authTypes } from "../types/auth.types";
 
-const { SIGN_IN, SIGN_UP } = authTypes;
+const { SIGN_IN, SIGN_UP, LOG_OUT } = authTypes;
 
 const initialState = {
     token: null,
@@ -10,8 +10,6 @@ const initialState = {
 const authReducer = (state = initialState, action) => {
     switch (action.type) {
         case SIGN_UP:
-            console.log('Token:', action.token);
-            console.log('Id:', action.userId);
             return {
                 ...state,
                 token: action.token,
@@ -22,7 +20,13 @@ const authReducer = (state = initialState, action) => {
             return {
                 ...state,
                 token: action.token,
-                userId: action.userId
+                userId: action.id
+            }
+        case LOG_OUT:
+            return {
+                ...state,
+                token: null,
+                userId: null
             }
 
         default:
