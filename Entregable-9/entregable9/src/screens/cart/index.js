@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { styles } from './styles'
 import CartItem from '../../components/cart-item'
 import { EmptyCartComponent } from '../../components/index'
-import { confirmCart, removeItem } from '../../store/actions/cart.actions'
+import { confirmCart, removeItem } from '../../store/actions/'
 
 const Cart = ({navigation}) => {
   const dispatch = useDispatch()

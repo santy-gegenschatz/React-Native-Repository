@@ -13,10 +13,10 @@ export const removeItem = (id) => ({
     id
 })
 
-export const confirmOrder = (order) => {
+export const confirmOrder = (order) => ({
     type: CONFIRM_ORDER,
     order
-}
+})
 
 export const confirmCart = (items, total) => {
     return async (dispatch) => {

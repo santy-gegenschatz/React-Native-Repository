@@ -33,7 +33,9 @@ export const styles = StyleSheet.create({
         marginVertical: 4
     },
     buttonContainer: {
-        width: '95%'
+        width: '95%',
+        flexDirection: 'row',
+        justifyContent: 'center'
     },  
     title: {
         fontSize: 25,
@@ -55,15 +57,29 @@ export const styles = StyleSheet.create({
     },
     buttonText: {
         color: colors.white,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        textAlign: 'center'
     },
     addToCartButton: {
         backgroundColor: colors.green,
-        width: '95%',
+        width: '40%',
         alignItems: 'center',
         borderRadius: 12,
-        padding: 20,
+        padding: 10,
         margin: 10,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+
+    addToFavouritesButton: {
+        backgroundColor: colors.blue,
+        width: '40%',
+        alignItems: 'center',
+        borderRadius: 12,
+        padding: 10,
+        margin: 10,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
 
 })

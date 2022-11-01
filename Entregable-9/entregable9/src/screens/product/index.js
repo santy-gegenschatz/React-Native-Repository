@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, TouchableOpacity, Image } from 'react-native'
 import {ProductImage, StatusIndicator} from '../../components/index'
 import { useDispatch, useSelector } from 'react-redux'
-import { addToCart } from '../../store/actions/cart.actions'
+import { addToCart } from '../../store/actions/index.js'
 import { styles } from './styles'
 
 const Product = ({navigation}) => {
@@ -13,6 +13,10 @@ const Product = ({navigation}) => {
     const addCartItem = () => {
         dispatch(addToCart(selectedProduct))
         navigation.navigate('CartTab')
+    }
+
+    const addToFavourites = () => {
+        navigation.navigate('Favourites')
     }
     
     return (
@@ -37,6 +41,14 @@ const Product = ({navigation}) => {
                         style = {styles.addToCartButton}
                     >
                         <Text style = {styles.buttonText}> Add to cart </Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity
+                        title = 'Add to Favourites'
+                        onPress = {addToFavourites}
+                        style = {styles.addToFavouritesButton}
+                    >
+                        <Text style = {styles.buttonText}> Add to Favourites </Text>
                     </TouchableOpacity>
                 </View>
             </View>
