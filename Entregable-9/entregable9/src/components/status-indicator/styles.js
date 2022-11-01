@@ -7,9 +7,10 @@ export const styles = StyleSheet.create({
         borderRadius: 15,
         height: 25,
         color: colors.black,
-        width: 60,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        paddingHorizontal: 8,
+        maxWidth: 115
     },
     text: {
         fontWeight: 'bold'

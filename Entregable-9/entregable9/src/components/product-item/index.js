@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, Text, TouchableOpacity, Image } from 'react-native'
 import { ProductImage } from '../../components/index' 
+import {StatusIndicator} from '../../components/index'
 import { styles } from './styles'
 
 const ProductItem = ({item, onSelected}) => {
@@ -11,9 +12,12 @@ const ProductItem = ({item, onSelected}) => {
             <View style = {styles.imageContainer}>
               <ProductImage url = {item.url} />
             </View>
-            <View style = {styles.infoContainer}>
+            <View style = {styles.headerContainer}>
               <Text style = {styles.title}> {item.title} </Text>
-              <Text style = {styles.subtitle}> {item.weight} | ${item.price}</Text>
+              <View style = {styles.descriptionContainer}>
+                <StatusIndicator text = {item.status}/>
+                <Text style = {styles.priceText}> {item.price} USD</Text>
+              </View>
             </View>
         </TouchableOpacity>
     </View>

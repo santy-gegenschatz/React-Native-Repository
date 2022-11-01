@@ -33,8 +33,18 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         height: '80%'
     },
-    infoContainer: {
+    headerContainer: {
         justifyContent: 'center',
         alignItems: 'flex-start'
+    },
+    descriptionContainer: {
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        alignItems: 'center'
+    },
+    priceText: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: colors.white
     }
 })
