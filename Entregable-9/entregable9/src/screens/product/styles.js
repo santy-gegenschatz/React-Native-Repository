@@ -13,8 +13,8 @@ export const styles = StyleSheet.create({
         width: '100%',
         height: '50%',
         alignItems: 'center',
-        width: '100%',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        padding: 5
     },
     infoContainer: {
         backgroundColor: colors.brown,

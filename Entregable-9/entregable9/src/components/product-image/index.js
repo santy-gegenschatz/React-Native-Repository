@@ -4,12 +4,11 @@ import { styles } from './styles'
 
 
 const ProductImage = ({url}) => {
-  console.log(url);
   return (
   <View style = {styles.container}>
     {url ? 
     <Image 
-      source = {{uri: 'https://images.urbndata.com/is/image/Anthropologie/993434_021_b'}} 
+      source = {{uri: url}} 
       style = {styles.image}
     />
     :

@@ -9,7 +9,7 @@ const ProductItem = ({item, onSelected}) => {
         <TouchableOpacity
           onPress={ () => onSelected(item)}>
             <View style = {styles.imageContainer}>
-              <ProductImage url = 'https://images.urbndata.com/is/image/Anthropologie/993434_021_b?$a15-pdp-detail-shot$&fit=constrain&qlt=80&wid=640'/>
+              <ProductImage url = {item.url} />
             </View>
             <View style = {styles.infoContainer}>
               <Text style = {styles.title}> {item.title} </Text>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, TouchableOpacity, Image } from 'react-native'
-import {StatusIndicator} from '../../components/index'
+import {ProductImage, StatusIndicator} from '../../components/index'
 import { useDispatch, useSelector } from 'react-redux'
 import { addToCart } from '../../store/actions/cart.actions'
 import { styles } from './styles'
@@ -18,8 +18,7 @@ const Product = ({navigation}) => {
     return (
         <View style = {styles.container}>
             <View style = {styles.imageContainer}>
-                <Text style = {styles.imageText}> Image goes here </Text>
-                <Image style = {styles.image} source = ''/> 
+                <ProductImage url = {selectedProduct.url}/>
             </View>
             <View style = {styles.infoContainer}>
                 <View>
