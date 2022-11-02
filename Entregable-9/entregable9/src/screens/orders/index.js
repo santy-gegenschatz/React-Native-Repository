@@ -10,12 +10,10 @@ const Orders = ({navigation}) => {
 
   const dispatch = useDispatch()
   const orders = useSelector( (state) => state.orders.list)
-  console.log(orders);
 
   const renderItem = ({item}) => <OrderItem order = {item} onCancel = {onCancel}/>
   
   const onCancel = (id) => {
-    console.warn(id);
     dispatch(deleteOrder(id))
   }
 

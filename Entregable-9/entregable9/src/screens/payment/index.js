@@ -1,13 +1,23 @@
 import React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
+import { confirmCart } from '../../store/actions/index'
+import { useDispatch, useSelector } from 'react-redux'
 import { styles } from './styles'
 
-const Payment = () => {
+const Payment = ({navigation}) => {
+    const dispatch = useDispatch()
+    const items = useSelector(state => state.cart.items)
+    const total = useSelector(state => state.cart.total)
+    const onConfirm = () => {
+        dispatch(confirmCart(items, total))
+        navigation.navigate('OrdersTab')
+    }
+
   return (
     <View style = {styles.container}>
         
         <View style = {styles.orderDetailsView}>
-            <Text> Price & Quantity </Text>
+            <Text> {total} </Text>
         </View>
         
         <View>
@@ -19,7 +29,9 @@ const Payment = () => {
                 <Text> No </Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style = {styles.positiveButton} >
+            <TouchableOpacity style = {styles.positiveButton} 
+                onPress = {onConfirm}
+            >
                 <Text> Yes </Text>
             </TouchableOpacity>
         </View>

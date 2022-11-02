@@ -1,5 +1,5 @@
-import { URL_API } from "../../constants/firebase";
 import { orderTypes } from "../types";
+import { URL_API } from "../../constants/firebase";
 
 const { GET_ORDERS, DELETE_ORDERS } = orderTypes
 
