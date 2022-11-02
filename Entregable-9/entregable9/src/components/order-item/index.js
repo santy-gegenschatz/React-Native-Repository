@@ -5,14 +5,14 @@ import { styles } from './styles'
 import { colors } from '../../constants/colors';
 
 const OrderItem = ({order, onCancel}) => {
-    const refactoredDate = order.date.toString()
   return (
     <View style = {styles.container}>
-      <View style = {styles.upperView}>
+      <View style = {styles.headerContainer}>
           <Text style = {styles.title}> Order </Text>
-          <Text style = {styles.subtitle}> Date: {refactoredDate} </Text>
+          <Text style = {styles.dateText}> {order.date} </Text>
       </View>
-      <View style = {styles.lowerView}>
+      <View style = {styles.infoContainer}>
+          <Text> {order.id} </Text>
           <Text style = {styles.subtitle}> Total: {order.total} USD </Text>
           <TouchableOpacity
           onPress = {() => onCancel(order.id)}>

@@ -1,6 +1,6 @@
 import { cartTypes } from "../types";
 import { URL_API } from "../../constants/firebase";
-import { useSelector } from "react-redux";
+import { generateDateWithMinutes } from '../../utils/dates'
 
 const {ADD_ITEM, REMOVE_ITEM, CONFIRM_ORDER} = cartTypes
 
@@ -20,6 +20,7 @@ export const confirmOrder = (order) => ({
 })
 
 export const confirmCart = (items, total, userId) => {
+    const date = (generateDateWithMinutes())
     return async (dispatch) => {
         try {
             const response = await fetch(`${URL_API}/orders.json`, {
@@ -28,7 +29,7 @@ export const confirmCart = (items, total, userId) => {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    date: new Date(),
+                    date,
                     items,
                     total,
                     owner: userId
