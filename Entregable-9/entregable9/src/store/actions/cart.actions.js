@@ -1,5 +1,6 @@
 import { cartTypes } from "../types";
 import { URL_API } from "../../constants/firebase";
+import { useSelector } from "react-redux";
 
 const {ADD_ITEM, REMOVE_ITEM, CONFIRM_ORDER} = cartTypes
 
@@ -18,7 +19,7 @@ export const confirmOrder = (order) => ({
     order
 })
 
-export const confirmCart = (items, total) => {
+export const confirmCart = (items, total, userId) => {
     return async (dispatch) => {
         try {
             const response = await fetch(`${URL_API}/orders.json`, {
@@ -29,12 +30,12 @@ export const confirmCart = (items, total) => {
                 body: JSON.stringify({
                     date: new Date(),
                     items,
-                    total
+                    total,
+                    owner: userId
                 })
             })
             
             const result = await response.json()
-            console.warn(result)
             dispatch({
                 type: CONFIRM_ORDER,
                 confirm: result

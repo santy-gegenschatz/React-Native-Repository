@@ -10,6 +10,7 @@ const Orders = ({navigation}) => {
 
   const dispatch = useDispatch()
   const orders = useSelector( (state) => state.orders.list)
+  const userId = useSelector(state => state.auth.userId)
 
   const renderItem = ({item}) => <OrderItem order = {item} onCancel = {onCancel}/>
   
@@ -19,7 +20,7 @@ const Orders = ({navigation}) => {
 
   useFocusEffect(
     useCallback(() => {
-      dispatch(getOrders())
+      dispatch(getOrders(userId))
     }, [dispatch])
   )
   

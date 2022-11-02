@@ -8,8 +8,9 @@ const Payment = ({navigation}) => {
     const dispatch = useDispatch()
     const items = useSelector(state => state.cart.items)
     const total = useSelector(state => state.cart.total)
+    const userId = useSelector(state => state.auth.userId)
     const onConfirm = () => {
-        dispatch(confirmCart(items, total))
+        dispatch(confirmCart(items, total, userId))
         navigation.navigate('OrdersTab')
     }
 

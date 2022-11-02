@@ -3,7 +3,7 @@ import { URL_API } from "../../constants/firebase";
 
 const { GET_ORDERS, DELETE_ORDERS } = orderTypes
 
-export const getOrders = () => {
+export const getOrders = (userId) => {
     return async (dispatch) => {
         try {   
             const response = await fetch(`${URL_API}/orders.json`, {
@@ -14,6 +14,25 @@ export const getOrders = () => {
             })
 
             const data = await response.json()
+            console.log('Data: ', data);
+            // The Object.keys interface gives us an array with all they keys of 
+            // the data object we are receiving
+            const keys = Object.keys(data)
+            // Then, we can loop that array with a forEach and operate
+            // Also we create some filteredOrders array which we will later pass on
+            // to the reducer to update the order list
+            let filteredOrders = []
+            keys.forEach( (key) => {
+                // We access each order
+                const order = data[key]
+                console.log(userId);
+                console.log(order.owner);
+                if (order.owner === userId) {
+                    console.log('pushing');
+                    filteredOrders.push({...data[key], id: key})
+                }
+            })
+            console.log(Object.keys(data))
             const orders = Object.keys(data).map(key => {
                 return {
                     ...data[key],
@@ -23,7 +42,7 @@ export const getOrders = () => {
 
             dispatch({
                 type: GET_ORDERS,
-                orders
+                orders: filteredOrders
             })
         } catch (e) {
             console.log(e);
