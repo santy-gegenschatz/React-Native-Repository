@@ -1,6 +1,6 @@
-import React, { useReducer, useState } from 'react'
+import React, { useReducer, useState, useEffect } from 'react'
 import { View, Text, TouchableOpacity, Button, KeyboardAvoidingView} from 'react-native'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { colors } from '../../constants/colors.js'
 import { signIn, signUp } from '../../store/actions/index'
 import { styles } from './styles.js'
@@ -38,6 +38,8 @@ const Auth = ({navigation}) => {
     const dispatch = useDispatch()
     const [isLogin, setIsLogin] = useState(true)
     const [formState, dispatchFormState] = useReducer(formReducer, initialState)
+    const executeAlert = useSelector((state) => state.alerts.error)
+    const alertMessage = useSelector((state) => state.alerts.message)
     const title = isLogin ? 'Login' : 'Register'
     const message = isLogin ? 'Dont have an account yet ?' : 'Already have an account ?'
     const messageAction = isLogin ? 'Sign in' : 'Sign up'
@@ -65,6 +67,17 @@ const Auth = ({navigation}) => {
         console.log(value, type);
         onFocusOut(type, value, dispatchFormState, formState)
     }
+
+    const onHandleAlert = () => {
+        if (executeAlert) {
+            alert(alertMessage)
+            dispatch({
+                type: 'CANCEL_ALERT'
+            })
+        }
+    }
+
+    onHandleAlert()
 
     return (
         <KeyboardAvoidingView style = {styles.containerKeyboard} behavior= {(Platform.OS === 'ios')? "padding" : null}>

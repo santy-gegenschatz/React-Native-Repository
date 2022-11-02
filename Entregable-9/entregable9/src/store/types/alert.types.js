@@ -1,0 +1,5 @@
+export const alertTypes = {
+    INVALID_PASSWORD: 'INVALID_PASSWORD',
+    EMAIL_NOT_FOUND: 'EMAIL_NOT_FOUND',
+    CANCEL_ALERT: 'CANCEL_ALERT'
+}

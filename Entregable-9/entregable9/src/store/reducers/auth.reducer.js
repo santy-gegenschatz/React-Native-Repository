@@ -4,7 +4,7 @@ const { SIGN_IN, SIGN_UP, LOG_OUT } = authTypes;
 
 const initialState = {
     token: null,
-    userId: null
+    userId: null,
 }
 
 const authReducer = (state = initialState, action) => {

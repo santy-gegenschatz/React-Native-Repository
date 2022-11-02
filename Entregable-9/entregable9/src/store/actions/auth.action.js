@@ -49,25 +49,29 @@ export const signIn = (email, password) => {
                     returnSecureToken: true
                 })
             })
-
-            if (!response.ok) {
-                console.log(response);
-                throw new Error ('Something went wrong')
+            // Take into account that the response object returns an ok attribute
+            // that might be true or false
+            // We can use that to split cases and then show the user personalized messages 
+            // in case something went wrong
+            const data = await response.json()
+            if (response.ok) {
+                dispatch({
+                    type: SIGN_IN,
+                    token: data.idToken,
+                    id: data.localId
+                })
+            } else {
+                // case everything went wrong
+                dispatch({
+                    type: data.error.message
+                })
             }
 
-            const data = await response.json()
             console.log('---');
+            console.log(response.ok);
             console.log(data);
-            console.log('---');
-            console.log('Result: ', data.idToken, data.localId);
-            dispatch({
-                type: SIGN_IN,
-                token: data.idToken,
-                id: data.localId
-            })
-
         } catch (e) {
-            console.log(e);
+            console.log('E:', e);
         }
     }
 }
