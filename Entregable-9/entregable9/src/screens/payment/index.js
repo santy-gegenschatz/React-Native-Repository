@@ -13,6 +13,7 @@ const Payment = () => {
         <View>
             <Text style = {styles.confirmText}> Confirm ?</Text>
         </View>
+        
         <View style = {styles.buttonsView}>
             <TouchableOpacity style = {styles.negativeButton} >
                 <Text> No </Text>

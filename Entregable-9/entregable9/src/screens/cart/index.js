@@ -22,8 +22,8 @@ const Cart = ({navigation}) => {
   }
 
   const goToPayment = () => {
-    dispatch(confirmCart(items, total))
-    navigation.navigate('OrdersTab')
+    // dispatch(confirmCart(items, total))
+    navigation.navigate('Payment')
   }
 
   return (

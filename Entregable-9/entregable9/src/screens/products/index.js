@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useCallback } from 'react'
 import { View, FlatList} from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
-import { filteredProducts, selectedProduct } from '../../store/actions/index'
+import { filteredProducts, getProducts, selectedProduct } from '../../store/actions/index'
 import ProductItem from '../../components/product-item'
 import { styles } from './styles'
+import { useFocusEffect } from '@react-navigation/native'
 
 const Products = ({navigation}) => {
     const dispatch = useDispatch()
@@ -25,6 +26,13 @@ const Products = ({navigation}) => {
         dispatch(selectedProduct(item.id))
         navigation.navigate('Product')
     }
+
+    useFocusEffect(
+        useCallback(() => {
+          console.log('Dispatching1234567');
+          dispatch(getProducts())
+        }, [dispatch])
+      )
 
     return (
         <View style = {styles.container}>
