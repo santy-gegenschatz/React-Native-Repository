@@ -4,6 +4,7 @@ import { styles } from './styles'
 import { useSelector, useDispatch} from 'react-redux' 
 import { deleteOrder, getOrders } from '../../store/actions/index'
 import OrderItem from '../../components/order-item'
+import { EmptyScreenComponent } from '../../components'
 import { useFocusEffect } from '@react-navigation/native'
 
 const Orders = ({navigation}) => {
@@ -26,11 +27,15 @@ const Orders = ({navigation}) => {
   
   return (
     <View style = {styles.container}>
+      {orders.length !== 0 ? 
         <FlatList 
             data = {orders}
             renderItem = {renderItem}
             keyExtractor = {item => item.id.toString()}
         />
+      :
+        <EmptyScreenComponent navigation = {navigation} message = 'It seems you have not ordered anything yet. Why don`t you checkout the awesome products of our store ?' tabname={'ShopTab'} />
+      }
     </View>
   )
 }

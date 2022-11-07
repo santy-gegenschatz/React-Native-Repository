@@ -3,7 +3,7 @@ import { View, TouchableOpacity, FlatList, Text } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { styles } from './styles'
 import CartItem from '../../components/cart-item'
-import { EmptyCartComponent } from '../../components/index'
+import { EmptyScreenComponent } from '../../components/index'
 import { confirmCart, removeItem } from '../../store/actions/'
 
 const Cart = ({navigation}) => {
@@ -50,7 +50,7 @@ const Cart = ({navigation}) => {
         </View>
       :
         <View style = {styles.emptyCartContainer}>
-          <EmptyCartComponent navigation = {navigation}/>
+          <EmptyScreenComponent navigation = {navigation} message = 'It seems your cart is empty. Why don`t you go to the store and checkout our awesome products?' tabname = {'ShopTab'}/>
         </View>
       }
     </View>

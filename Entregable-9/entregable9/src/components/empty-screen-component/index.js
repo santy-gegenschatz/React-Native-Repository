@@ -2,16 +2,16 @@ import React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import { styles } from './styles'
 
-const EmptyCartComponent = ({ navigation }) => {
+const EmptyScreenComponent = ({ navigation, message, tabname }) => {
 
     const onHandleGoToStore = () => {
-        navigation.navigate('ShopTab')
+        navigation.navigate(tabname)
     }  
 
  return (
     <View style = {styles.container}>
         <Text style = {styles.title}> Oops... </Text> 
-        <Text style = {styles.text}> It seems you cart is empty. Why dont you check our awesome products in the store ?</Text>
+        <Text style = {styles.text}> {message}</Text>
         <TouchableOpacity
             style = {styles.button}
             onPress = {onHandleGoToStore}
@@ -22,4 +22,4 @@ const EmptyCartComponent = ({ navigation }) => {
   )
 }
 
-export default EmptyCartComponent
+export default EmptyScreenComponent

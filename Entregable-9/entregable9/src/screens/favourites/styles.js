@@ -3,10 +3,9 @@ import { colors } from '../../constants/colors'
 
 export const styles = StyleSheet.create({
     container: {
-        width: '100%',
+        flex: 1,
         backgroundColor: colors.beige,
-        justifyContent: 'center',
-        alignItems: 'center'
+        justifyContent: 'center'
     },
     title: {
         fontSize: 16,
@@ -15,5 +14,9 @@ export const styles = StyleSheet.create({
     flatlist: {
         backgroundColor: colors.beige,
         width: '100%'
+    },
+    alertMessageContainer: {
+        justifyContent: 'center',
+        padding: 1,
     }
 })

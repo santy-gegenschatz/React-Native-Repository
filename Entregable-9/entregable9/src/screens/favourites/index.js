@@ -9,6 +9,7 @@ import { FlatList } from 'react-native'
 import ProductItem from '../../components/product-item'
 import { useDispatch } from 'react-redux'
 import { selectedProduct } from '../../store/actions'
+import { EmptyScreenComponent } from '../../components'
 
 const Favourites = ({navigation}) => {
   const [favourites, setFavourites] = useState([])
@@ -50,13 +51,19 @@ const Favourites = ({navigation}) => {
   )
   return (
     <View style = {styles.container}> 
+      {favourites.length !== 0 ?
         <FlatList
-                data = {favourites}
-                renderItem = {renderItem}
-                keyExtractor = {item => item.id.toString()}
-                style = {styles.flatlist}
-                >
-            </FlatList>
+          data = {favourites}
+          renderItem = {renderItem}
+          keyExtractor = {item => item.id.toString()}
+          style = {styles.flatlist}
+          >
+        </FlatList>
+      :
+      <View style = {styles.alertMessageContainer}>
+        <EmptyScreenComponent navigation = {navigation} message = 'It seems you have no favourites yet. Why don`t you checkout the awesome products of our store ?' tabname={'ShopTab'} />
+      </ View>
+      }
     </View>
   )
 }
