@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { styles } from './styles'
 import { useDispatch } from 'react-redux'
 import { saveProfileImage, saveUserName } from '../../store/actions/index'
-import { deletePlace, insertPlace } from '../../db/index'
+import { insertPlace } from '../../db/index'
 
 const EditProfile = ({navigation}) => {
   const [image, setImage] = useState()

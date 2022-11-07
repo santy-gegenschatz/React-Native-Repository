@@ -1,7 +1,7 @@
 import { ActivityIndicator} from 'react-native';
 import { useFonts } from 'expo-font';
 import { Provider, useSelector} from 'react-redux'
-import { init } from './src/db/index'
+import { initUserDB, initFavouritesDB } from './src/db/index'
 import AppNavigator from './src/navigation';
 import store from './src/store/'
 
@@ -14,16 +14,17 @@ export default function App() {
     return <ActivityIndicator />
   }
 
-  const initializeDB = async () => {
-    init()
-    .then ( () => {
-        console.log('Database Initialized');
-    })
-    .catch( (e) => {
-        console.log('There was an error', e);
-    })
+  const initializeDBs = async () => {
+    try {
+      await initUserDB()
+      console.log('User DB initialized');
+      await initFavouritesDB()
+      console.log('Favourites DB initialized');
+    } catch (e) {
+      console.log(e);
+    }
   }
-  initializeDB()
+  initializeDBs()
   return (
     <Provider store = {store}>
       <AppNavigator />

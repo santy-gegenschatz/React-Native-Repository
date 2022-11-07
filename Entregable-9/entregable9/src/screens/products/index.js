@@ -29,7 +29,6 @@ const Products = ({navigation}) => {
 
     useFocusEffect(
         useCallback(() => {
-          console.log('Dispatching1234567');
           dispatch(getProducts())
         }, [dispatch])
       )

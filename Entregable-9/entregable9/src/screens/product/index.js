@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, Image } from 'react-native'
 import {ProductImage, StatusIndicator} from '../../components/index'
 import { useDispatch, useSelector } from 'react-redux'
 import { addToCart } from '../../store/actions/index.js'
+import { insertFavourite } from '../../db'
 import { styles } from './styles'
 
 const Product = ({navigation}) => {
@@ -15,7 +16,12 @@ const Product = ({navigation}) => {
         navigation.navigate('CartTab')
     }
 
-    const addToFavourites = () => {
+    const addToFavourites = async () => {
+        try {
+            await insertFavourite(selectedProduct.id, selectedProduct.categoryId, selectedProduct.title, selectedProduct.description, selectedProduct.price, selectedProduct.status, selectedProduct.url)
+        } catch (e) {
+            console.log(e);
+        }
         navigation.navigate('Favourites')
     }
     
