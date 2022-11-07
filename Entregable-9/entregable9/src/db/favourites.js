@@ -44,12 +44,12 @@ export const getFavourites = () => {
     return promise 
 }
 
-export const deleteFavourite = () => {
+export const deleteFavourite = (id) => {
     const promise = new Promise((resolve, reject) => {
         db.transaction( (tx) => {
             tx.executeSql(
-                'DELETE FROM places',
-                [],
+                'DELETE FROM favourites WHERE id = (?) ',
+                [id],
                 (_, result) => resolve(result),
                 (_, err) => reject(err)
             )

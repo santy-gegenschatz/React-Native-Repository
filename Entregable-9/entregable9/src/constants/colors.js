@@ -11,4 +11,5 @@ export const colors = {
     pink: '#FF99FF',
     lightBlue: '#CCFFFF',
     lightGrey: '#DCDCDC',
+    brownish: '#B28746'
 }

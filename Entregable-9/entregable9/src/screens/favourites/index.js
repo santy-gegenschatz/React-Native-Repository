@@ -1,7 +1,7 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Button } from 'react-native'
 import { styles } from './styles'
-import { getFavourites } from '../../db'
+import { getFavourites, deleteFavourite } from '../../db'
 import { useFocusEffect } from '@react-navigation/native'
 import { useCallback } from 'react'
 import { useState } from 'react'
@@ -23,9 +23,18 @@ const Favourites = ({navigation}) => {
     }
   } 
 
+  const deleteFavouriteFromDB = async (id) => {
+    try {
+      const response = await deleteFavourite(id)
+      console.log(response);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   const renderItem= ({item}) => {
     return (
-        <ProductItem item = {item} onSelected = {onSelected}/>
+        <ProductItem item = {item} onSelected = {onSelected} favourite = {true} onDelete = {deleteFavouriteFromDB}/>
     )
   }
 
@@ -41,7 +50,6 @@ const Favourites = ({navigation}) => {
   )
   return (
     <View style = {styles.container}> 
-        <Text style = {styles.title}> This is the favourites screen </Text>
         <FlatList
                 data = {favourites}
                 renderItem = {renderItem}
