@@ -12,21 +12,36 @@ export const styles = StyleSheet.create({
     },
     title: {
         fontSize: 22,
-        color: colors.black,
+        color: colors.white,
         fontWeight: 'bold'
     },
     subtitle: {
         fontSize: 18,
+        fontWeight: 'bold',
         color: colors.black
     },
     headerContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between'
     },
+    bottomContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
+    itemsContainer: {
+        marginTop: 10
+    },  
     lowerView: {
         flexDirection: 'row'
     },
     infoContainer: {
         marginTop: 5
+    },
+    itemsContainer: {
+        marginVertical: 10
+    },
+    idText: {
+        color: colors.black,
+        fontSize: 16
     }
 })

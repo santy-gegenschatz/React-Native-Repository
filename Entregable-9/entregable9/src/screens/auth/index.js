@@ -1,4 +1,4 @@
-import React, { useReducer, useState, useEffect } from 'react'
+import React, { useReducer, useState } from 'react'
 import { View, Text, TouchableOpacity, Button, KeyboardAvoidingView} from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { colors } from '../../constants/colors.js'
@@ -50,6 +50,7 @@ const Auth = ({navigation}) => {
     }
 
     const onHandleTextChange = (value, type) => {
+        console.log(value, type);
         onInputChange(type, value, dispatchFormState, formState)
     } 
 
@@ -94,7 +95,8 @@ const Auth = ({navigation}) => {
                         keyboardType = 'email-address'
                         autoCapitalize = 'none'
                         autoCorrect = {false}
-                        onChange = {({nativeEvent: {text}}) => onHandleTextChange(text, 'email')}
+                        onChangeText = {(text) => onHandleTextChange(text, 'email')}
+                        onBlur = {(e) => onHandleBlur(e.nativeEvent.text, 'email')}
                         hasError = {formState.email.hasError}
                         error = {formState.email.error}
                         touched = {formState.email.touched}
@@ -109,7 +111,8 @@ const Auth = ({navigation}) => {
                         secureTextEntry = {true}
                         autoCapitalize = 'none'
                         autoCorrect = {false}
-                        onChange = {({nativeEvent: {text}}) => onHandleTextChange(text, 'password')}
+                        onChangeText = {(text) => onHandleTextChange(text, 'password')}
+                        onBlur = {(e) => onHandleBlur(e.nativeEvent.text, 'password')}
                         hasError = {formState.password.hasError}
                         error = {formState.password.error}
                         touched = {formState.password.touched}

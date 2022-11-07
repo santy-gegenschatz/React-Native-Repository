@@ -45,5 +45,9 @@ export const styles = StyleSheet.create({
   buttonConfirmView: {
     flexDirection: 'row',
     justifyContent: 'space-between'
+  },
+  listContainer: {
+    height: '80%',
+    width: '100%'
   }
 })

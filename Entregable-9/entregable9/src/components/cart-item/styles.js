@@ -4,26 +4,38 @@ import { colors } from "../../constants/colors";
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
         alignItems: 'center',
         margin: 20,
-        backgroundColor: colors.green,
+        backgroundColor: colors.brownish,
         borderRadius: 25,
         shadowOffset: 3,
-        padding: 10
+        padding: 10,
+        height: 180
+    },
+    imageContainer: {
+        width: '40%',
+        height: '98%'
     },
     headerContainer: {
-        backgroundColor: colors.green,
         flexDirection: 'row',
         alignItems: 'flex-start'
     },
     contentContainer: {
         flex: 1,
-        flexDirection: 'row',
         justifyContent: 'space-between',
-        alignSelf: 'stretch'
+    },
+    descriptionContainer: {
+        flex: 1,
+        justifyContent: 'space-between',
+    },
+    deleteButtonContainer: {
+        flexDirection: 'row',
+        justifyContent: 'flex-end'
     },
     title: {
-        fontSize: 22
+        fontSize: 22,
+        fontWeight: 'bold'
     }
 })

@@ -8,10 +8,8 @@ import { selectCategory } from '../../store/actions/index'
 
 const Categories = ({navigation, route}) => {
     const dispatch = useDispatch()
-    //
-    const categories = useSelector( (state) => {
-        return state.category.categories
-    })
+
+    const categories = useSelector( (state) => state.category.categories)
 
     const renderItem = ({item}) => {
         return (<CategoryItem item = {item} onSelected = {onSelected}/>)

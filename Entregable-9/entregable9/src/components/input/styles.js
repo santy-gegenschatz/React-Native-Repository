@@ -24,6 +24,6 @@ export const styles = StyleSheet.create({
         textAlign: 'center'
     },
     messageContainer: {
-        backgroundColor: colors.grey,
+        backgroundColor: colors.beige,
     }
 })
