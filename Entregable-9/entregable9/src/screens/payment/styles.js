@@ -21,7 +21,8 @@ export const styles = StyleSheet.create({
     buttonsContainer: {
       justifyContent: 'space-between',
       alignItems: 'center',
-      width: '100%'
+      width: '100%',
+      marginTop: 20
     },
     title: {
       fontSize: 18,

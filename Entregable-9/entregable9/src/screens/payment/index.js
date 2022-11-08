@@ -1,8 +1,10 @@
 import React from 'react'
+import * as Location from 'expo-location'
 import { View, Text, TouchableOpacity, TextInput, Button } from 'react-native'
 import { confirmCart } from '../../store/actions/index'
 import { useDispatch, useSelector } from 'react-redux'
 import { styles } from './styles'
+import { LocationSelector } from '../../components/index'
 
 const Payment = ( {navigation} ) => {
     const dispatch = useDispatch()
@@ -28,18 +30,8 @@ const Payment = ( {navigation} ) => {
         <Text style = {styles.title}> Please confirm your order and Enter the receiving address</Text>
         <Text> Order Total </Text>
         <Text> {total} USD </Text>
-         <Text> Receiving Address </Text>
-        <View style = {styles.inputContainer}>
-            <TextInput style = {styles.input} />
-            <Button 
-                title = 'Search'
-                onPress = {onHandleLocationSearch}
-            />
-        </View>
-        <View style = {styles.mapContainer}>
-            <Text> MapContainer </Text>
-        </View>
-
+        <Text> Receiving Address </Text>
+        <LocationSelector onLocation = {onHandleLocationSearch}/>
         <View style = {styles.buttonsContainer}>
             <TouchableOpacity style = {styles.positiveButton} onPress = {onConfirm} >
                 <Text> Confirm Order </Text>
