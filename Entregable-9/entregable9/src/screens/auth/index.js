@@ -50,14 +50,11 @@ const Auth = ({navigation}) => {
     }
 
     const onHandleTextChange = (value, type) => {
-        console.log(value, type);
         onInputChange(type, value, dispatchFormState, formState)
     } 
 
     const onHandleSubmit = () => {
         const { email, password } = formState
-        console.log('Email: ', email.value);
-        console.log('Password: ', password.value);
         isLogin ?
         dispatch(signIn(email.value, password.value))
         :
@@ -65,7 +62,7 @@ const Auth = ({navigation}) => {
     }
 
     const onHandleBlur = (value, type) => {
-        console.log(value, type);
+        console.log('value:', value);
         onFocusOut(type, value, dispatchFormState, formState)
     }
 
@@ -96,7 +93,14 @@ const Auth = ({navigation}) => {
                         autoCapitalize = 'none'
                         autoCorrect = {false}
                         onChangeText = {(text) => onHandleTextChange(text, 'email')}
-                        onBlur = {(e) => onHandleBlur(e.nativeEvent.text, 'email')}
+                        onBlur = {(e) => {
+                            console.log(e);
+                            onHandleBlur(e.nativeEvent.text, 'email')
+                        }}
+                        onEndEditing = {(e) => {
+                            console.log('Editing End: ', e.nativeEvent.text);
+                            onHandleBlur(e.nativeEvent.text, 'email')
+                        }}
                         hasError = {formState.email.hasError}
                         error = {formState.email.error}
                         touched = {formState.email.touched}
@@ -113,6 +117,10 @@ const Auth = ({navigation}) => {
                         autoCorrect = {false}
                         onChangeText = {(text) => onHandleTextChange(text, 'password')}
                         onBlur = {(e) => onHandleBlur(e.nativeEvent.text, 'password')}
+                        onEndEditing = {(e) => {
+                            console.log('Editing End: ', e.nativeEvent.text);
+                            onHandleBlur(e.nativeEvent.text, 'password')
+                        }}
                         hasError = {formState.password.hasError}
                         error = {formState.password.error}
                         touched = {formState.password.touched}

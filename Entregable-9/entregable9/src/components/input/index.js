@@ -17,6 +17,7 @@ const Input = ({
     hasError,
     error,
     touched,
+    onEndEditing,
     ...props
 }) => {
     return (
@@ -34,6 +35,7 @@ const Input = ({
                 placeholder = {placeholder}
                 placeholderTextColor = {placeholderTextColor}
                 keyboardType = {keyboardType}
+                onEndEditing = {onEndEditing}
                 />
             </Label>
             { hasError && touched && 
