@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
       borderRadius: 25,
       height: '55%',
       marginTop: 20,
-      padding: 7
+      padding: 3
     },
     inputContainer: {
       flexDirection: 'row',
@@ -18,9 +18,9 @@ export const styles = StyleSheet.create({
       alignItems: 'center'
     },
     mapContainer: {
-      backgroundColor: colors.red,
+      backgroundColor: colors.beige,
       height: '60%',
-      width: '95%',
+      width: '99%',
       alignItems: 'center',
       justifyContent: 'center'
     },

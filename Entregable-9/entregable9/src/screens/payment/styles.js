@@ -4,25 +4,25 @@ import { colors } from '../../constants/colors'
 export const styles = StyleSheet.create({
     container: {
       flex: 1,
-      justifyContent: 'flex-start',
-      alignItems: 'center',
-      backgroundColor: colors.beige
+      backgroundColor: colors.beige,
+      paddingTop: 10,
+      height: 2000
     },
-    inputContainer: {
-      flexDirection: 'row',
-      justifyContent: 'flex-start',
+    orderTotalContainer: {
+      marginTop: 10,
       alignItems: 'center'
     },
-    mapContainer: {
-      backgroundColor: colors.red,
-      height: '40%',
-      width: '90%'
+    locationSelectorContainer: {
+      marginTop: -10,
+      alignItems: 'center',
+      height: 600,
+      width: '99%'
     },
     buttonsContainer: {
+      marginTop: -230,
+      marginBottom: 25,
       justifyContent: 'space-between',
       alignItems: 'center',
-      width: '100%',
-      marginTop: 20
     },
     title: {
       fontSize: 18,
@@ -53,18 +53,12 @@ export const styles = StyleSheet.create({
       borderRadius: 22,
       alignItems: 'center'
     },
-    confirmText: {
-        fontSize: 30,
-        fontWeight: 'bold',
-        margin: 20
+    orderText: {
+      fontSize: 18
     },
-    input: {
-        height: 40,
-        width: '65%',
-        margin: 12,
-        borderWidth: 1,
-        padding: 10,
-        textAlign: 'center',
-        backgroundColor: colors.white
-    }
+    totalText: {
+      fontSize: 30,
+      fontWeight: 'bold',
+      margin: 5
+  },
   })

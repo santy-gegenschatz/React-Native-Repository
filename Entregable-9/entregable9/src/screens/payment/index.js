@@ -32,22 +32,25 @@ const Payment = ( {navigation} ) => {
     }
 
   return (
-    <View style = {styles.container}>
-        <Text style = {styles.title}> Please confirm your order and enter the receiving address</Text>
-        <Text> Order Total </Text>
-        <Text> {total} USD </Text>
-        <Text> Receiving Address </Text>
-        <LocationSelector onLocation = {onHandleLocationSearch}/>
-        <View style = {styles.buttonsContainer}>
-            <TouchableOpacity style = {location ? styles.positiveButton : styles.positiveButtonDisabled} onPress = {onConfirm} disabled = {location ? false : true}>
-                <Text> Confirm Order </Text>
-            </TouchableOpacity>
+    <ScrollView style = {styles.container}>
+            <Text style = {styles.title}> Please confirm your order and enter the receiving address</Text>
+            <View style = {styles.orderTotalContainer}>
+                <Text style = {styles.orderText}> Order Total </Text>
+                <Text style = {styles.totalText}> {total} USD </Text>
+            </View>
+            <View style = {styles.locationSelectorContainer}>
+                <LocationSelector onLocation = {onHandleLocationSearch}/>
+            </View>
+            <View style = {styles.buttonsContainer}>
+                <TouchableOpacity style = {location ? styles.positiveButton : styles.positiveButtonDisabled} onPress = {onConfirm} disabled = {location ? false : true}>
+                    <Text> Confirm Order </Text>
+                </TouchableOpacity>
 
-            <TouchableOpacity style = {styles.negativeButton} onPress = {onHandleCancel}>
-                <Text> Cancel </Text>
-            </TouchableOpacity>
-        </View>
-    </View>
+                <TouchableOpacity style = {styles.negativeButton} onPress = {onHandleCancel}>
+                    <Text> Cancel </Text>
+                </TouchableOpacity>
+            </View>
+    </ScrollView>
   )
 }
 
