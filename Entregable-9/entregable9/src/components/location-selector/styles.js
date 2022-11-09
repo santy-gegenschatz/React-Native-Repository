@@ -19,8 +19,8 @@ export const styles = StyleSheet.create({
     },
     mapContainer: {
       backgroundColor: colors.red,
-      height: '50%',
-      width: '90%',
+      height: '60%',
+      width: '95%',
       alignItems: 'center',
       justifyContent: 'center'
     },

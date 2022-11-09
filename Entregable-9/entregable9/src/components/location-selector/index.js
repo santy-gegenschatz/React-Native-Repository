@@ -1,11 +1,16 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import * as Location from 'expo-location'
+import { MapPreview } from '../index'
 import { View, Text, Button, TextInput, TouchableOpacity, Alert} from 'react-native'
 import { styles } from './styles'
 
 
 const LocationSelector = ({onLocation}) => {
+    const navigation = useNavigation()
+    const route = useRoute()
     const [pickedLocation, setPickedLocation] = useState(null)
+    const mapLocation = route?.params?.mapLocation
 
     const verifyPermissions = async () => {
         const { status } = await Location.requestForegroundPermissionsAsync() 
@@ -41,9 +46,20 @@ const LocationSelector = ({onLocation}) => {
         }
 
     }
+
+    const onHandlerPickInMap = () => {
+        navigation.navigate('Maps')
+    }
+
+    useEffect(() => {
+        if (mapLocation) {
+            setPickedLocation(mapLocation)
+            onLocation(mapLocation)
+        }
+    }, [mapLocation])
+
   return (
     <View style = {styles.container}>
-        <Text> Location Selector Component </Text>
         <TouchableOpacity
             style = {styles.button}
             onPress ={onHandlerLocation}
@@ -53,24 +69,13 @@ const LocationSelector = ({onLocation}) => {
 
         <TouchableOpacity
             style = {styles.button}
-            onPress ={ onLocation}
+            onPress ={onHandlerPickInMap}
         >
             <Text> Select location in map </Text>
         </TouchableOpacity>
 
-        {/* <View style = {styles.inputContainer}>
-            <TextInput style = {styles.input} />
-            <Button 
-                title = 'Search'
-                onPress = {onLocation}
-            />
-        </View> */}
         <View style = {styles.mapContainer}>
-            {pickedLocation ?
-            <Text> Picked Location: {pickedLocation.lat}, {pickedLocation.lng} </Text>
-            :
-            <Text> No location set yet </Text>
-            }
+            <MapPreview location = {pickedLocation} />
         </View>
     </View>
     
