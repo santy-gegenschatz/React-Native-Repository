@@ -19,7 +19,7 @@ export const confirmOrder = (order) => ({
     order
 })
 
-export const confirmCart = (items, total, userId) => {
+export const confirmCart = (items, total, userId, location) => {
     const date = (generateDateWithMinutes())
     return async (dispatch) => {
         try {
@@ -32,6 +32,7 @@ export const confirmCart = (items, total, userId) => {
                     date,
                     items,
                     total,
+                    location,
                     owner: userId
                 })
             })

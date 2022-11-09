@@ -45,6 +45,14 @@ export const styles = StyleSheet.create({
       borderRadius: 22,
       alignItems: 'center'
     },
+    positiveButtonDisabled: {
+      backgroundColor: colors.lightGrey,
+      margin: 5,
+      padding: 10,
+      width: '80%',
+      borderRadius: 22,
+      alignItems: 'center'
+    },
     confirmText: {
         fontSize: 30,
         fontWeight: 'bold',

@@ -25,6 +25,8 @@ export default function App() {
     }
   }
   initializeDBs()
+  const access = process.env.REACT_APP_API_KEY
+  console.log('Api:', access);
   return (
     <Provider store = {store}>
       <AppNavigator />

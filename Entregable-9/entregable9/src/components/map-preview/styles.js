@@ -10,8 +10,19 @@ export const styles = StyleSheet.create({
         alignItems: 'center'
     },
     title: {
-        fontSize: 22,
+        fontSize: 14,
         textAlign: 'center',
         marginBottom: 5
+    },
+    mapImage: {
+        minWidth: '95%',
+        minHeight: '80%',
+        height: 100,
+        borderRadius: 22,
+        borderWidth: 1,
+        margin: 5
+    },
+    text: {
+        textAlign: 'center'
     }
 })

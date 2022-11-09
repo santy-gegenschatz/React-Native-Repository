@@ -1,11 +1,12 @@
 import React from 'react'
 import * as Location from 'expo-location'
-import { View, Text, TouchableOpacity, ScrollView } from 'react-native'
+import { useState } from 'react'
 import { confirmCart } from '../../store/actions/index'
 import { useDispatch, useSelector } from 'react-redux'
-import { styles } from './styles'
 import { LocationSelector } from '../../components/index'
-import { useState } from 'react'
+import { translateCoordsToAddress } from '../../utils/maps'
+import { View, Text, TouchableOpacity, ScrollView } from 'react-native'
+import { styles } from './styles'
 
 const Payment = ( {navigation} ) => {
     const dispatch = useDispatch()
@@ -14,10 +15,12 @@ const Payment = ( {navigation} ) => {
     const userId = useSelector(state => state.auth.userId)
     const [location, setLocation] = useState(null)
 
-    const onConfirm = () => {
+    const onConfirm = async () => {
         // Here you should add the location as a parameter
-        dispatch(confirmCart(items, total, userId))
-        navigation.navigate('OrdersTab')
+        const address = await translateCoordsToAddress(location.lat, location.lng)
+        console.log(address);
+        // dispatch(confirmCart(items, total, userId))
+        // navigation.navigate('OrdersTab')
     }
 
     const onHandleCancel = () => {
@@ -36,7 +39,7 @@ const Payment = ( {navigation} ) => {
         <Text> Receiving Address </Text>
         <LocationSelector onLocation = {onHandleLocationSearch}/>
         <View style = {styles.buttonsContainer}>
-            <TouchableOpacity style = {styles.positiveButton} onPress = {onConfirm} >
+            <TouchableOpacity style = {location ? styles.positiveButton : styles.positiveButtonDisabled} onPress = {onConfirm} disabled = {location ? false : true}>
                 <Text> Confirm Order </Text>
             </TouchableOpacity>
 

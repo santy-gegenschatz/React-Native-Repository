@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, Text, Button } from 'react-native'
+import { View, Text, TouchableOpacity } from 'react-native'
 import MapView, { Marker } from 'react-native-maps'
 import { colors } from '../../constants/colors'
 import { styles } from './styles'
@@ -41,11 +41,12 @@ const Maps = ({navigation}) => {
             }
         </MapView>
 
-        <Button
-            title = 'Done'
+        <TouchableOpacity
+            style = {styles.confirmButton}
             onPress = {onSaveLocationAndGoBack}
         >
-        </Button>
+            <Text> Confirm Address </Text>
+        </TouchableOpacity>
     </View>
   )
 }
