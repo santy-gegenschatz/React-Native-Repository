@@ -31,7 +31,10 @@ const Orders = ({navigation}) => {
         <FlatList 
             data = {orders}
             renderItem = {renderItem}
-            keyExtractor = {item => item.id.toString()}
+            keyExtractor = {item => {
+              console.log(item.id.toString());
+              return item.id.toString()
+            }}
         />
       :
         <EmptyScreenComponent navigation = {navigation} message = 'It seems you have not ordered anything yet. Why don`t you checkout the awesome products of our store ?' tabname={'ShopTab'} />
