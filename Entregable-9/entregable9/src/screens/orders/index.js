@@ -13,7 +13,7 @@ const Orders = ({navigation}) => {
   const orders = useSelector( (state) => state.orders.list)
   const userId = useSelector(state => state.auth.userId)
 
-  const renderItem = ({item}) => <OrderItem order = {item} onCancel = {onCancel}/>
+  const renderItem = ({item}) => <OrderItem order = {item} onCancel = {onCancel} key = {item.id.toString()}/>
   
   const onCancel = (id) => {
     dispatch(deleteOrder(id))

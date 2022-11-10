@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import * as Location from 'expo-location'
-import { MapPreview } from '../index'
+import  MapPreview  from '../map-preview/index'
 import { View, Text, Button, TextInput, TouchableOpacity, Alert} from 'react-native'
 import { styles } from './styles'
 
