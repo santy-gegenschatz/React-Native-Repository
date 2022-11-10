@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "entregable8",
-    "slug": "entregable8",
+    "name": "entregable9",
+    "slug": "entregable9",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -24,10 +24,23 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.santy.gegen.entregable9"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "250bf4f0-2952-4f51-8435-ef60ac118cb2"
+      }
+    },
+    "build": {
+      "preview": {
+        "android": {
+          "buildType": "apk"
+        }
+      }
     }
   }
 }
