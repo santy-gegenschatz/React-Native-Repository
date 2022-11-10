@@ -41,7 +41,6 @@ export const validateInput = (name, value) => {
 export const UPDATED_FORM = 'UPDATED_FORM'
 
 export const onInputChange = (name, value, dispatch, formState) => {
-    console.log('Input changing:', name, value);
     const { hasError, error } = validateInput(name, value) 
     let isFormValid = true
 
@@ -71,7 +70,6 @@ export const onInputChange = (name, value, dispatch, formState) => {
 }
 
 export const onFocusOut = (name, value, dispatch, formState) => {
-    console.log('focusing out', name, value);
     const { hasError, error } = validateInput(name, value);
     let isFormValid = true;
 

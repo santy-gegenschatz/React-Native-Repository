@@ -19,7 +19,6 @@ export const signUp = (email, password) => {
             })
 
             if (!response.ok) {
-                console.log(response);
                 throw new Error ('Something went wrong')
             }
 
@@ -68,12 +67,8 @@ export const signIn = (email, password) => {
                     type: data.error.message
                 })
             }
-
-            console.log('---');
-            console.log(response.ok);
-            console.log(data);
         } catch (e) {
-            console.log('E:', e);
+            console.log('Error:', e);
         }
     }
 }
