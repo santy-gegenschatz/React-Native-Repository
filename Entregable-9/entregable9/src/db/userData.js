@@ -6,7 +6,7 @@ export const initUserDB = () => {
     const promise = new Promise( (resolve, reject) => {
         db.transaction((tx) => {
             tx.executeSql(
-                'CREATE TABLE IF NOT EXISTS places (id INTEGER PRIMARY KEY NOT NULL, title TEXT NOT NULL, image TEXT NOT NULL, address TEXT NOT NULL, coords TEXT NOT NULL)',
+                'CREATE TABLE IF NOT EXISTS users (username TEXT NOT NULL, image TEXT NOT NULL, address TEXT NOT NULL)',
                 [],
                 () => resolve(),
                 (_, err) => reject(err)
@@ -15,13 +15,13 @@ export const initUserDB = () => {
     })
     return promise
 }
-
-export const insertUser = (title, image, address, coords) => {
+// The cool thing about this method is that it allows to store in each row every modification the user makes
+export const insertUserData = (username, image, address) => {
     const promise = new Promise((resolve, reject) => {
         db.transaction( (tx) => {
             tx.executeSql(
-                'INSERT INTO places (title, image, address, coords) VALUES (?,?,?,?)',
-                [title, image, address, JSON.stringify(coords)],
+                'INSERT INTO users (username, image, address) VALUES (?,?,?)',
+                [username, image, address],
                 (_, result) => resolve(result),
                 (_, err) => reject(err)
             )
@@ -30,32 +30,11 @@ export const insertUser = (title, image, address, coords) => {
     return promise
 }
 
-export const deletePlace = () => {
-    const promise = new Promise((resolve, reject) => {
-        db.transaction( (tx) => {
-            tx.executeSql(
-                'DELETE FROM places',
-                [],
-                (_, result) => resolve(result),
-                (_, err) => reject(err)
-            )
-        })
-    })
-    return promise
-}
-
-export const updatePlace = (title, image, address, coords) => {
-    deletePlace()
-    .then ( () => {
-        return (insertPlace(title, image, address, coords))
-    })
-}
-
-export const getPlaces = () => {
+export const getUserData = () => {
     const promise = new Promise( (resolve, reject) => {
         db.transaction( (tx) => {
             tx.executeSql(
-                'SELECT * FROM places',
+                'SELECT * FROM users',
                 [],
                 (_, result) => resolve(result),
                 (_, err) => reject(err)

@@ -93,12 +93,7 @@ const Auth = ({navigation}) => {
                         autoCapitalize = 'none'
                         autoCorrect = {false}
                         onChangeText = {(text) => onHandleTextChange(text, 'email')}
-                        onBlur = {(e) => {
-                            console.log(e);
-                            onHandleBlur(e.nativeEvent.text, 'email')
-                        }}
                         onEndEditing = {(e) => {
-                            console.log('Editing End: ', e.nativeEvent.text);
                             onHandleBlur(e.nativeEvent.text, 'email')
                         }}
                         hasError = {formState.email.hasError}
@@ -116,9 +111,7 @@ const Auth = ({navigation}) => {
                         autoCapitalize = 'none'
                         autoCorrect = {false}
                         onChangeText = {(text) => onHandleTextChange(text, 'password')}
-                        onBlur = {(e) => onHandleBlur(e.nativeEvent.text, 'password')}
                         onEndEditing = {(e) => {
-                            console.log('Editing End: ', e.nativeEvent.text);
                             onHandleBlur(e.nativeEvent.text, 'password')
                         }}
                         hasError = {formState.password.hasError}

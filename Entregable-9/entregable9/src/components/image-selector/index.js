@@ -1,37 +1,43 @@
 import React, { useState } from 'react'
-import { View, Text, TouchableOpacity, Image, TextInput } from 'react-native'
-import { useSelector } from 'react-redux'
+import { View, Text, TouchableOpacity, Image } from 'react-native'
 import * as ImagePicker from 'expo-image-picker'
 import { styles } from './styles'
 
 
-const ImageSelector = ({onImage, onText, onAddress}) => {
+const ImageSelector = ({onImage}) => {
     const [pickedUrl, setPickedUrl] = useState()
-    const username = useSelector( state => state.user.userName)
-    const userAddress = 'Maryland'
+
     const verifyPermissions = async () => {
-        const { status } = await ImagePicker.requestCameraPermissionsAsync
-        // if (status !== 'granted') {
-        //     Alert.alert('You do not have the permissions to use the camera')
-        //     return false
-        // }
-        return true
+        try {
+            const { status } = await ImagePicker.requestCameraPermissionsAsync()
+            if (status !== 'granted') {
+                Alert.alert('You do not have the permissions to use the camera')
+                return false
+            }
+            return true
+        } catch (e) {
+            console.log(e);
+        }
     }
 
     const onHandleTakePhoto = async () => {
-        const hasPermission = await verifyPermissions()
-        if (!hasPermission) {
-            return 
+        try {
+            const hasPermission = await verifyPermissions()
+            if (!hasPermission) {
+                return 
+            }
+    
+            const image = await ImagePicker.launchCameraAsync({
+                allowsEditing: true,
+                aspect: [1, 1],
+                quality: 0.5
+            })
+    
+            setPickedUrl(image.uri)
+            onImage(image.uri)
+        } catch (e) {
+            console.log(e);
         }
-
-        const image = await ImagePicker.launchCameraAsync({
-            allowsEditing: true,
-            aspect: [1, 1],
-            quality: 0.5
-        })
-
-        setPickedUrl(image.uri)
-        onImage(image.uri)
     }
 
     return (
@@ -49,24 +55,6 @@ const ImageSelector = ({onImage, onText, onAddress}) => {
         > 
                 <Text> Choose Image </Text>
         </TouchableOpacity>
-        <View style = {styles.userNameContainer}>
-            <Text> Username </Text>
-            <TextInput 
-                style = {styles.input} 
-                placeholder = {username ? username : 'Enter your username'}
-                onChangeText = {(text) => onText(text)}
-            /> 
-        </View>
-
-        <View style = {styles.userNameContainer}>
-            <Text> Address </Text>
-            <TextInput 
-                style = {styles.input} 
-                placeholder = {userAddress ? userAddress : 'Enter your address'}
-                onChangeText = {(text) => {onAddress(text)}}
-            /> 
-        </View>
-
     </View>
   )
 }

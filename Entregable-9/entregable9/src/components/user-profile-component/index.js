@@ -13,8 +13,8 @@ const ProfileComponent = ({imageUri, userName, userEmail, userAddress}) => {
                 }
             </View>
             <View style = {styles.textContainer}>
-                <Text style = {styles.userNameText} > {userName ? userName : 'Username not selected yet'}</Text>
                 <Text style = {styles.emailText}> {userEmail} </Text>
+                <Text style = {styles.userNameText} > {userName ? userName : 'Username not selected yet'}</Text>
                 <Text style = {styles.addressText}> {userAddress ? userAddress : 'No address selected yet'} </Text>
             </View>
         </View>

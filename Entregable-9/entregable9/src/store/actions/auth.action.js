@@ -27,7 +27,8 @@ export const signUp = (email, password) => {
             dispatch({
                 type: SIGN_UP,
                 token: data.idToken,
-                userId: data.localId
+                userId: data.localId,
+                userEmail: email
             })
         } catch (e) {
             console.log(e);
@@ -58,7 +59,8 @@ export const signIn = (email, password) => {
                 dispatch({
                     type: SIGN_IN,
                     token: data.idToken,
-                    id: data.localId
+                    id: data.localId,
+                    userEmail: email
                 })
             } else {
                 // case everything went wrong

@@ -26,7 +26,7 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
-    userNameText: {
+    emailText: {
         fontSize: 16,
         fontWeight: 'bold',
         margin: 5
@@ -42,6 +42,9 @@ export const styles = StyleSheet.create({
         fontSize: 15,
         fontStyle: 'italic',
         marginTop: 20
+    },
+    userNameText: {
+        fontSize: 14
     }
 
 })
