@@ -22,7 +22,7 @@ const Product = ({navigation}) => {
         } catch (e) {
             console.log(e);
         }
-        navigation.navigate('Favourites')
+        navigation.navigate('FavouritesTab')
     }
     
     return (
