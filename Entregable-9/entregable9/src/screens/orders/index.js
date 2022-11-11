@@ -12,8 +12,8 @@ const Orders = ({navigation}) => {
   const dispatch = useDispatch()
   const orders = useSelector( (state) => state.orders.list)
   const userId = useSelector(state => state.auth.userId)
-
-  const renderItem = ({item}) => <OrderItem order = {item} onCancel = {onCancel} key = {item.id.toString()}/>
+  console.log('Orders:', orders);
+  const renderItem = ({item}) => <OrderItem order = {item} onCancel = {onCancel} />
   
   const onCancel = (id) => {
     dispatch(deleteOrder(id))
@@ -31,10 +31,7 @@ const Orders = ({navigation}) => {
         <FlatList 
             data = {orders}
             renderItem = {renderItem}
-            keyExtractor = {item => {
-              console.log(item.id.toString());
-              return item.id.toString()
-            }}
+            keyExtractor = {item => item.id.toString()}
         />
       :
         <EmptyScreenComponent navigation = {navigation} message = 'It seems you have not ordered anything yet. Why don`t you checkout the awesome products of our store ?' tabname={'ShopTab'} />

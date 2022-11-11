@@ -14,7 +14,7 @@ const OrderItem = ({order, onCancel}) => {
       <View style = {styles.infoContainer}>
           <Text style = {styles.idText}> {order.id.slice(1, order.id.length)} </Text>
           <View style = {styles.itemsContainer}>
-            {order.items.map( (item) => { return <Text> -{item.title} X{item.quantity}</Text> })}
+            {order.items.map( (item) => { return <Text key = {item.id}> -{item.title} X{item.quantity}</Text> })}
           </View>
           <View style = {styles.bottomContainer}>
             <Text style = {styles.subtitle}> Total: {order.total} USD </Text>
