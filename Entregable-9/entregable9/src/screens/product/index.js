@@ -9,7 +9,7 @@ import { styles } from './styles'
 const Product = ({navigation}) => {
     const dispatch = useDispatch()
     
-    const selectedProduct = useSelector( (state) => { return (state.products.selected)})
+    const selectedProduct = useSelector( (state) => { return state.products.selected})
 
     const addCartItem = () => {
         dispatch(addToCart(selectedProduct))

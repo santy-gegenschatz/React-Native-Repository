@@ -24,15 +24,18 @@ const cartReducer = (state = initialState, action) => {
                 return item
             })
         } else {
-            const item = {...action.item, quantity: 1}
-            updatedCart = [...state.items, item]
+            const newItem = action.item
+            const final = {...newItem, quantity: 1}
+            updatedCart = [...state.items, final]
         }
 
-        return {
+        const obj = {
             ...state,
             items: updatedCart,
             total: sumTotal(updatedCart)
         }
+        return obj
+        
         case(REMOVE_ITEM):
             const filteredCart = state.items.filter(item => item.id !== action.id)
             return {

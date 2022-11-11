@@ -10,7 +10,6 @@ export const styles = StyleSheet.create({
         margin: 20,
         backgroundColor: colors.brownish,
         borderRadius: 25,
-        shadowOffset: 3,
         padding: 10,
         height: 180
     },

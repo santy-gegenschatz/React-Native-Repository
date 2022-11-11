@@ -4,22 +4,21 @@ import { useDispatch, useSelector } from 'react-redux'
 import { styles } from './styles'
 import CartItem from '../../components/cart-item'
 import { EmptyScreenComponent } from '../../components/index'
-import { confirmCart, removeItem } from '../../store/actions/'
+import { removeItem } from '../../store/actions/'
 
 const Cart = ({navigation}) => {
   const dispatch = useDispatch()
   const items = useSelector(state => state.cart.items)
   const total = useSelector(state => state.cart.total)
-
+  
   const onDelete = (id) => {
     dispatch(removeItem(id))
   }
 
   const renderItem = ({item}) => {
-    return (
-      <CartItem item = {item} onDelete = {onDelete}/> 
-    )
+    return (<CartItem item={item} onDelete={onDelete} />)
   }
+    
 
   const goToPayment = () => {
     navigation.navigate('Payment')
