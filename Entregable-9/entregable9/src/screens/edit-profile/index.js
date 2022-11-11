@@ -3,50 +3,67 @@ import {KeyboardAvoidingView, Text, TouchableOpacity, View, TextInput} from 'rea
 import { ImageSelector } from '../../components'
 import { useState } from 'react'
 import { styles } from './styles'
-import { useDispatch } from 'react-redux'
-import { saveProfileImage, saveUserName } from '../../store/actions/index'
 import { insertUserData, getUserData } from '../../db/index'
+import { useIsFocused } from '@react-navigation/native'
 
 const EditProfile = ({navigation}) => {
-  const [image, setImage] = useState()
-  const [username, setUsername] = useState()
-  const [userAddress, setUserAddress] = useState()
-  const dispatch = useDispatch()
+  // To detect whether it is focused or not
+  const isFocused = useIsFocused()
+  // Variables to keep track of changes
+  const [currentImage, setCurrentImage] = useState('')
+  const [currentUsername, setCurrentUsername] = useState('')
+  const [currentUserAddress, setCurrentUserAddress] = useState('')
+  const [newImage, setNewImage] = useState('')
+  const [newUsername, setNewUsername] = useState('')
+  const [newUserAddress, setNewUserAddress] = useState('')
+
 
   const getUserDatafromDB = async () => {
-    console.log('fetching');
+    console.log('fetching - Edit Profile');
     try {
         const response = await getUserData()
-        console.log(response);
         const position = response.rows._array.length - 1
-        setUsername(response.rows._array[position].username)
-        setUserAddress(response.rows._array[position].address)
+        // We set all the states to the same value coming from the database
+        // Then the actuators will change the new states
+        // When ready to push to databse again, we just compare priginal vs changed
+        // If different, we push the changed ones, otherwise we push the original ones
+        setCurrentImage(response.rows._array[position].image)
+        setNewImage(response.rows._array[position].image)
+        setCurrentUsername(response.rows._array[position].username)
+        setNewUsername(response.rows._array[position].username)
+        setCurrentUserAddress(response.rows._array[position].address)
+        setNewUserAddress(response.rows._array[position].address)
     } catch (e) {
         console.log(e);
     }
   }
+
   useEffect( () => {
+    // When rendered, get the current data from the db
     getUserDatafromDB()
-  }, [])
+  }, [isFocused])
 
   const onHandlerImage = (imageUri) => {
-    setImage(imageUri)
+    setNewImage(imageUri)
   }
 
-  const onHandleSubmit = () => {
-    console.log(username, userAddress, image);
-    // In order to save it via Redux
-    dispatch(saveProfileImage(image))
-    dispatch(saveUserName(username))
-    // In order to save it via DB
-    insertUserData(username || '', image || '', userAddress || '')
-    .then ( () => {
-      navigation.navigate('Profile');
-    })
-    .catch( (e) => console.log(e))
+  const onHandleSubmit = async () => {
+    console.log('Submitting');
+    console.log('Current:', currentImage, currentUserAddress, currentUsername);
+    console.log('New:', newImage, newUserAddress, newUsername)
+
+    // if the previous is equal to the new, pass the previous
+    const finalImage = currentImage === newImage ? currentImage : newImage
+    const finalUsername = currentUsername === newUsername ? currentUsername : newUsername
+    const finalAddress = currentUserAddress === newUserAddress ? currentUserAddress : newUserAddress
+
+    // call database and pass three values
+    await insertUserData(finalUsername, finalImage, finalAddress)
+    console.log('Inserted new values', finalUsername, finalImage, finalAddress);
+    navigation.navigate('Profile')
+
   }
-  console.log('Username:', username);
-  console.log('Address:', userAddress);
+
   return (
 
     <KeyboardAvoidingView style = {styles.container} behavior= {(Platform.OS === 'ios')? "padding" : null}>
@@ -57,11 +74,14 @@ const EditProfile = ({navigation}) => {
                 <Text> Username </Text>
                 <TextInput 
                     style = {styles.input} 
-                    placeholder = {username ? username : 'Enter your username'}
+                    placeholder = {currentUsername ? currentUsername : 'Enter your username'}
                     onEndEditing = {(e) => {
-                      console.log('end:', e);
-                      setUsername(e.nativeEvent.text)
-                      console.log(username);
+                      console.log('Edit end:', e);
+                      setNewUsername(e.nativeEvent.text)
+                    }}
+                    onChangeText = {(text) => {
+                      console.log('Change text:', text);
+                      setNewUsername(text)
                     }}
                 /> 
             </View>
@@ -70,8 +90,12 @@ const EditProfile = ({navigation}) => {
                 <Text> Address </Text>
                 <TextInput 
                     style = {styles.input} 
-                    placeholder = {userAddress ? userAddress : 'Enter your address'}
-                    onEndEditing = {(e) => setUserAddress(e.nativeEvent.text)}
+                    placeholder = {currentUserAddress ? currentUserAddress : 'Enter your address'}
+                    onEndEditing = {(e) => setNewUserAddress(e.nativeEvent.text)}
+                    onChangeText = {(text) => {
+                      console.log('Change address:', text);
+                      setNewUserAddress(text)
+                    }}
                 /> 
             </View>
           </View>

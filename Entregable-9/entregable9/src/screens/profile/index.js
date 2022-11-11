@@ -5,11 +5,12 @@ import { logOut } from '../../store/actions/index'
 import { ProfileComponent } from '../../components/index'
 import { getUserData } from '../../db/index' 
 import { styles } from './styles'
+import { useIsFocused } from '@react-navigation/native'
 
 
 const Profile = ({navigation}) => {
     const dispatch = useDispatch()
-    const reduxUsername = useSelector(state => state.user.userName)
+    const isFocused = useIsFocused()
     const userEmail = useSelector(state => state.auth.userEmail)
     const [username, setUserName] = useState()
     const [userImage, setUserImage] = useState()
@@ -32,10 +33,9 @@ const Profile = ({navigation}) => {
             console.log(e);
         }
     }
-    getUserDatafromDB()
     useEffect( () => {
         getUserDatafromDB()
-    }, [reduxUsername])
+    }, [isFocused])
     return (
         <View style = {styles.container}>
             <ProfileComponent imageUri = {userImage} userName = {username} userEmail = {userEmail} userAddress = {userAddress}/>
