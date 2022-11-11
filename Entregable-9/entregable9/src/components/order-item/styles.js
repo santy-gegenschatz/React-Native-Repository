@@ -26,7 +26,8 @@ export const styles = StyleSheet.create({
     },
     bottomContainer: {
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        marginTop: 7
     },
     itemsContainer: {
         marginTop: 10
@@ -42,6 +43,10 @@ export const styles = StyleSheet.create({
     },
     idText: {
         color: colors.black,
+        fontSize: 17
+    },
+    addressText: {
+        marginTop: 5,
         fontSize: 16
     }
 })

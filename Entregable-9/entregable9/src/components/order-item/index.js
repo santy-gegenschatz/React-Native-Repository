@@ -16,6 +16,7 @@ const OrderItem = ({order, onCancel}) => {
           <View style = {styles.itemsContainer}>
             {order.items.map( (item) => { return <Text key = {item.id}> -{item.title} X{item.quantity}</Text> })}
           </View>
+          <Text style = {styles.addressText}> Receiving Address: {order.location || 'Fake street 123'} </Text>
           <View style = {styles.bottomContainer}>
             <Text style = {styles.subtitle}> Total: {order.total} USD </Text>
             <TouchableOpacity

@@ -12,7 +12,6 @@ export const URL_GEOCODING = (lat, lng) => {
 export const translateCoordsToAddress = async (lat, lng) => {
     try {
         const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${API_KEY_MAPS}`)
-        console.log(response);
         const data = await response.json()
         console.log('Data: ', data);
         const address = data.results[0].formatted_address

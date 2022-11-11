@@ -14,7 +14,6 @@ export const getOrders = (userId) => {
             })
 
             const data = await response.json()
-            console.log('Data: ', data);
             // The Object.keys interface gives us an array with all they keys of 
             // the data object we are receiving
             const keys = Object.keys(data)
@@ -25,14 +24,10 @@ export const getOrders = (userId) => {
             keys.forEach( (key) => {
                 // We access each order
                 const order = data[key]
-                console.log(userId);
-                console.log(order.owner);
                 if (order.owner === userId) {
-                    console.log('pushing');
                     filteredOrders.push({...data[key], id: key})
                 }
             })
-            console.log(Object.keys(data))
             const orders = Object.keys(data).map(key => {
                 return {
                     ...data[key],
