@@ -1,15 +1,16 @@
-import React from 'react'
-import * as Location from 'expo-location'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { confirmCart } from '../../store/actions/index'
 import { useDispatch, useSelector } from 'react-redux'
-import { LocationSelector } from '../../components/index'
+import { EmptyScreenComponent, LocationSelector } from '../../components/index'
 import { translateCoordsToAddress } from '../../utils/maps'
 import { View, Text, TouchableOpacity, ScrollView } from 'react-native'
 import { styles } from './styles'
+import { useIsFocused } from '@react-navigation/native'
 
 const Payment = ( {navigation} ) => {
     const dispatch = useDispatch()
+    const isFocused = useIsFocused()
     const items = useSelector(state => state.cart.items)
     const total = useSelector(state => state.cart.total)
     const userId = useSelector(state => state.auth.userId)
@@ -32,26 +33,39 @@ const Payment = ( {navigation} ) => {
         setLocation(location)
     }
 
-  return (
-    <ScrollView style = {styles.container}>
-            <Text style = {styles.title}> Please confirm your order and enter the receiving address</Text>
-            <View style = {styles.orderTotalContainer}>
-                <Text style = {styles.orderText}> Order Total </Text>
-                <Text style = {styles.totalText}> {total} USD </Text>
-            </View>
-            <View style = {styles.locationSelectorContainer}>
-                <LocationSelector onLocation = {onHandleLocationSearch}/>
-            </View>
-            <View style = {styles.buttonsContainer}>
-                <TouchableOpacity style = {location ? styles.positiveButton : styles.positiveButtonDisabled} onPress = {onConfirm} disabled = {location ? false : true}>
-                    <Text> Confirm Order </Text>
-                </TouchableOpacity>
+    useEffect( () => {
+        if (items.length === 0) {
+            onHandleCancel()
+        }
+    }, [isFocused])
 
-                <TouchableOpacity style = {styles.negativeButton} onPress = {onHandleCancel}>
-                    <Text> Cancel </Text>
-                </TouchableOpacity>
-            </View>
-    </ScrollView>
+  return (
+    <>
+        {items.length !== 0 ?
+            <ScrollView style = {styles.container}>
+                    <Text style = {styles.title}> Please confirm your order and enter the receiving address</Text>
+                    <View style = {styles.orderTotalContainer}>
+                        <Text style = {styles.orderText}> Order Total </Text>
+                        <Text style = {styles.totalText}> {total} USD </Text>
+                    </View>
+                    <View style = {styles.locationSelectorContainer}>
+                        <LocationSelector onLocation = {onHandleLocationSearch}/>
+                    </View>
+                    <View style = {styles.buttonsContainer}>
+                        <TouchableOpacity style = {location ? styles.positiveButton : styles.positiveButtonDisabled} onPress = {onConfirm} disabled = {location ? false : true}>
+                            <Text> Confirm Order </Text>
+                        </TouchableOpacity>
+        
+                        <TouchableOpacity style = {styles.negativeButton} onPress = {onHandleCancel}>
+                            <Text> Cancel </Text>
+                        </TouchableOpacity>
+                    </View>
+            </ScrollView>
+        :
+        <>
+        </>
+    }
+    </>
   )
 }
 
