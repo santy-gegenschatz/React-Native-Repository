@@ -19,7 +19,6 @@ const EditProfile = ({navigation}) => {
 
 
   const getUserDatafromDB = async () => {
-    console.log('fetching - Edit Profile');
     try {
         const response = await getUserData()
         const position = response.rows._array.length - 1
@@ -48,10 +47,6 @@ const EditProfile = ({navigation}) => {
   }
 
   const onHandleSubmit = async () => {
-    console.log('Submitting');
-    console.log('Current:', currentImage, currentUserAddress, currentUsername);
-    console.log('New:', newImage, newUserAddress, newUsername)
-
     // if the previous is equal to the new, pass the previous
     const finalImage = currentImage === newImage ? currentImage : newImage
     const finalUsername = currentUsername === newUsername ? currentUsername : newUsername
@@ -59,7 +54,6 @@ const EditProfile = ({navigation}) => {
 
     // call database and pass three values
     await insertUserData(finalUsername, finalImage, finalAddress)
-    console.log('Inserted new values', finalUsername, finalImage, finalAddress);
     navigation.navigate('Profile')
 
   }
@@ -76,11 +70,9 @@ const EditProfile = ({navigation}) => {
                     style = {styles.input} 
                     placeholder = {currentUsername ? currentUsername : 'Enter your username'}
                     onEndEditing = {(e) => {
-                      console.log('Edit end:', e);
                       setNewUsername(e.nativeEvent.text)
                     }}
                     onChangeText = {(text) => {
-                      console.log('Change text:', text);
                       setNewUsername(text)
                     }}
                 /> 
@@ -93,7 +85,6 @@ const EditProfile = ({navigation}) => {
                     placeholder = {currentUserAddress ? currentUserAddress : 'Enter your address'}
                     onEndEditing = {(e) => setNewUserAddress(e.nativeEvent.text)}
                     onChangeText = {(text) => {
-                      console.log('Change address:', text);
                       setNewUserAddress(text)
                     }}
                 /> 

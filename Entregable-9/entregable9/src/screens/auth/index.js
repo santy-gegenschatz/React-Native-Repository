@@ -62,7 +62,6 @@ const Auth = ({navigation}) => {
     }
 
     const onHandleBlur = (value, type) => {
-        console.log('value:', value);
         onFocusOut(type, value, dispatchFormState, formState)
     }
 

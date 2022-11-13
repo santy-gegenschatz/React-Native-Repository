@@ -14,7 +14,6 @@ const LocationSelector = ({onLocation}) => {
 
     const verifyPermissions = async () => {
         const { status } = await Location.requestForegroundPermissionsAsync() 
-        console.log('Continuing');
         if (status !== 'granted') {
             Alert.alert('you need to grant permissions to use this app')
             return false
@@ -27,13 +26,11 @@ const LocationSelector = ({onLocation}) => {
         if (!hasPermission) {
             return 
         }
-        console.log(hasPermission);
         try {
             const location = await Location.getCurrentPositionAsync({
                     accuracy: Location.Accuracy.Highest,
                     maximumAge: 10000 
             })
-            console.log(location);
             
             setPickedLocation({
                 lat: location.coords.latitude,

@@ -17,9 +17,7 @@ export default function App() {
   const initializeDBs = async () => {
     try {
       await initUserDB()
-      console.log('User DB initialized');
       await initFavouritesDB()
-      console.log('Favourites DB initialized');
     } catch (e) {
       console.log(e);
     }

@@ -5,7 +5,6 @@ import { styles } from "./styles";
 
 const MapPreview = ({location}) => {
     const mapUrl = location ? URL_MAPS(location.lat, location.lng) : ""
-    console.log('Location:', mapUrl);
     return (
         <View style = {styles.container}>
             {location ?

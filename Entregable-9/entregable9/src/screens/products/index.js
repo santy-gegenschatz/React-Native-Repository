@@ -12,10 +12,6 @@ const Products = ({navigation}) => {
     const productsFiltered = useSelector( (state) => (state.products.filteredProducts))
     const products = useSelector( (state) => (state.products.products))
 
-    useEffect( () => {
-        // dispatch(filteredProducts(selectedCategory.id))
-    }, [])
-
     const renderItem= ({item}) => {
         return (
             <ProductItem item = {item} onSelected = {onSelected}/>

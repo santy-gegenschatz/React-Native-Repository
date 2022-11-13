@@ -18,7 +18,6 @@ const Payment = ( {navigation} ) => {
 
     const onConfirm = async () => {
         // Here you should add the location as a parameter
-        console.log();
         const address = await translateCoordsToAddress(location.lat, location.lng)
         const fakeAddress = address || 'Fake Street 124'
         dispatch(confirmCart(items, total, userId, fakeAddress))

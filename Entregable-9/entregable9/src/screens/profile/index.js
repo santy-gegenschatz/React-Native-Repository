@@ -21,10 +21,8 @@ const Profile = ({navigation}) => {
     }
     // Define and get the userAddress from the database
     const getUserDatafromDB = async () => {
-        console.log('fetching');
         try {
             const response = await getUserData()
-            console.log(response);
             const position = response.rows._array.length - 1
             setUserName(response.rows._array[position].username)
             setUserImage(response.rows._array[position].image)

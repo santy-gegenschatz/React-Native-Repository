@@ -12,7 +12,6 @@ const Orders = ({navigation}) => {
   const dispatch = useDispatch()
   const orders = useSelector( (state) => state.orders.list)
   const userId = useSelector(state => state.auth.userId)
-  console.log('Orders:', orders);
   const renderItem = ({item}) => <OrderItem order = {item} onCancel = {onCancel} />
   
   const onCancel = (id) => {

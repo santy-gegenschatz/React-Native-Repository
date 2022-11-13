@@ -25,7 +25,6 @@ export const getProducts = () => {
 
             // Turn the response into a JSON
             const data = await response.json()
-            console.log('Data: ', data);
             dispatch({
                 type: SET_PRODUCTS,
                 data
